@@ -74,19 +74,19 @@ export function Navbar({ groups, whatsappDisplay }: { groups: NavGroup[]; whatsa
   return (
     <>
       <header
-        className={`fixed inset-x-0 top-0 z-50 text-bone transition-colors duration-300 ${
-          overlay ? "bg-transparent" : "bg-forest"
+        className={`fixed inset-x-0 top-0 z-50 transition-[background-color,box-shadow,color] duration-300 ${
+          overlay ? "bg-transparent text-bone" : "bg-bone/95 text-ink shadow-[0_1px_0_var(--color-line)] backdrop-blur-md"
         }`}
       >
         <a
           href="#main"
-          className="sr-only focus:not-sr-only focus:absolute focus:top-3 focus:left-3 focus:z-50 focus:bg-bone focus:px-4 focus:py-2 focus:text-forest"
+          className="sr-only focus:not-sr-only focus:absolute focus:top-3 focus:left-3 focus:z-50 focus:rounded-full focus:bg-forest focus:px-4 focus:py-2 focus:text-bone"
         >
           Skip to content
         </a>
         <nav ref={navRef} aria-label="Main" className="container-x flex h-[4.5rem] items-center justify-between gap-6 lg:h-20">
-          <Logo tone="light" />
-
+          <Logo tone={overlay ? "light" : "dark"} />
+  
           <ul className="hidden items-center gap-1 lg:flex">
             {groups.map((g) => {
               const open = openGroup === g.label;
@@ -95,7 +95,7 @@ export function Navbar({ groups, whatsappDisplay }: { groups: NavGroup[]; whatsa
                   <div className="flex items-center" onMouseEnter={() => setOpenGroup(g.label)}>
                     <Link
                       href={g.href}
-                      className={`py-2 pr-1 pl-3.5 text-[0.93rem] font-medium ${isActive(g.href) ? "underline decoration-1 underline-offset-8" : ""}`}
+                      className={`rounded-full py-2 pr-1 pl-3.5 text-[0.93rem] font-medium ${isActive(g.href) ? "underline decoration-1 underline-offset-8" : ""}`}
                     >
                       {g.label}
                     </Link>
@@ -108,7 +108,7 @@ export function Navbar({ groups, whatsappDisplay }: { groups: NavGroup[]; whatsa
                         e.stopPropagation();
                         setOpenGroup(open ? null : g.label);
                       }}
-                      className="grid size-8 place-items-center"
+                      className="grid size-8 place-items-center rounded-full"
                     >
                       <ChevronDown className={`size-4 transition-transform ${open ? "rotate-180" : ""}`} />
                     </button>
@@ -119,24 +119,24 @@ export function Navbar({ groups, whatsappDisplay }: { groups: NavGroup[]; whatsa
                       open ? "visible translate-y-0 opacity-100" : "invisible -translate-y-1 opacity-0"
                     }`}
                   >
-                    <ul className="w-[24rem] border border-tan bg-bone py-2 text-ink">
+                    <ul className="w-[26rem] rounded-2xl border border-line bg-paper p-2 text-ink shadow-[0_20px_50px_-20px_rgba(29,28,25,0.35)]">
                       {g.items.map((it) => (
                         <li key={it.href}>
                           <Link
                             href={it.href}
-                            className="group flex items-start justify-between gap-4 px-5 py-3"
+                            className="group flex items-start justify-between gap-4 rounded-xl px-4 py-3 hover:bg-bone"
                           >
                             <span>
-                              <span className="block font-serif text-lg group-hover:underline group-hover:underline-offset-4">{it.label}</span>
+                              <span className="block font-serif text-lg">{it.label}</span>
                               <span className="block text-sm text-muted">{it.description}</span>
                             </span>
-                            <ArrowRight className="mt-1.5 size-4 shrink-0 text-forest opacity-0 transition-opacity group-hover:opacity-100" />
+                            <ArrowRight className="mt-1.5 size-4 shrink-0 text-clay opacity-0 transition-opacity group-hover:opacity-100" />
                           </Link>
                         </li>
                       ))}
-                      <li className="mt-1 border-t border-tan px-5 pt-2">
-                        <Link href={g.href} className="arrow-link text-sm text-forest">
-                          View all {g.label.toLowerCase()} <ArrowRight className="size-4" />
+                      <li className="mt-1 border-t border-line px-4 pt-3 pb-2">
+                        <Link href={g.href} className="text-sm font-semibold text-forest link-underline">
+                          View all {g.label.toLowerCase()}
                         </Link>
                       </li>
                     </ul>
@@ -148,7 +148,7 @@ export function Navbar({ groups, whatsappDisplay }: { groups: NavGroup[]; whatsa
               <li key={l.href}>
                 <Link
                   href={l.href}
-                  className={`px-3.5 py-2 text-[0.93rem] font-medium ${isActive(l.href) ? "underline decoration-1 underline-offset-8" : ""}`}
+                  className={`rounded-full px-3.5 py-2 text-[0.93rem] font-medium ${isActive(l.href) ? "underline decoration-1 underline-offset-8" : ""}`}
                   aria-current={isActive(l.href) ? "page" : undefined}
                 >
                   {l.label}
@@ -156,18 +156,18 @@ export function Navbar({ groups, whatsappDisplay }: { groups: NavGroup[]; whatsa
               </li>
             ))}
           </ul>
-
+  
           <div className="flex items-center gap-2">
             <Link
               href="/enquire#enquiry"
-              className="btn btn-light hidden !min-h-10 !px-4 !py-2 text-sm sm:inline-flex"
+              className={`btn hidden !min-h-11 !px-5 !py-2 text-sm sm:inline-flex ${overlay ? "btn-light" : "btn-primary"}`}
             >
               <WhatsAppIcon className="size-4" />
               WhatsApp Enquiry
             </Link>
             <button
               type="button"
-              className="grid size-11 place-items-center lg:hidden"
+              className="grid size-11 place-items-center rounded-full lg:hidden"
               aria-expanded={mobileOpen}
               aria-controls="mobile-menu"
               aria-label={mobileOpen ? "Close menu" : "Open menu"}
@@ -177,7 +177,7 @@ export function Navbar({ groups, whatsappDisplay }: { groups: NavGroup[]; whatsa
             </button>
           </div>
         </nav>
-
+  
       </header>
       {mobileOpen && (
         <div
@@ -186,16 +186,18 @@ export function Navbar({ groups, whatsappDisplay }: { groups: NavGroup[]; whatsa
         >
           <div className="container-x flex min-h-full flex-col pt-4 pb-8">
             {groups.map((g) => (
-              <div key={g.label} className="border-b border-tan py-4">
-                <Link href={g.href} className="eyebrow text-muted">
+              <div key={g.label} className="border-b border-line py-5">
+                <Link href={g.href} className="eyebrow text-clay">
                   {g.label}
                 </Link>
-                <ul className="mt-1">
+                <ul className="mt-3 grid grid-cols-2 gap-2">
                   {g.items.map((it) => (
                     <li key={it.href}>
-                      <Link href={it.href} className="flex min-h-12 items-center justify-between font-serif text-xl">
+                      <Link
+                        href={it.href}
+                        className="flex min-h-12 items-center rounded-xl bg-paper px-4 font-serif text-lg"
+                      >
                         {it.label}
-                        <ArrowRight className="size-4 text-forest" />
                       </Link>
                     </li>
                   ))}
@@ -205,9 +207,9 @@ export function Navbar({ groups, whatsappDisplay }: { groups: NavGroup[]; whatsa
             <ul className="py-3">
               {simpleLinks.map((l) => (
                 <li key={l.href}>
-                  <Link href={l.href} className="flex min-h-12 items-center justify-between border-b border-tan text-lg">
+                  <Link href={l.href} className="flex min-h-14 items-center justify-between border-b border-line font-serif text-2xl">
                     {l.label}
-                    <ArrowRight className="size-4 text-forest" />
+                    <ArrowRight className="size-5 text-clay" />
                   </Link>
                 </li>
               ))}

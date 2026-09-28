@@ -1,7 +1,7 @@
 import Link from "next/link";
 
 export function Logo({ tone = "dark" }: { tone?: "dark" | "light" }) {
-  const color = tone === "light" ? "text-bone" : "text-forest";
+  const color = tone === "light" ? "text-bone" : "text-forest-deep";
   return (
     <Link href="/" className={`group inline-flex items-center gap-2.5 ${color}`} aria-label="Balilethu Livestock — home">
       <svg viewBox="0 0 32 32" className="size-8 shrink-0" aria-hidden="true">
@@ -12,7 +12,7 @@ export function Logo({ tone = "dark" }: { tone?: "dark" | "light" }) {
       </svg>
       <span className="flex flex-col leading-none">
         <span className="font-serif text-[1.3rem] tracking-tight">Balilethu</span>
-        <span className="mt-0.5 text-[0.58rem] font-semibold tracking-[0.2em] uppercase opacity-80">Livestock</span>
+        <span className="mt-0.5 text-[0.58rem] font-semibold tracking-[0.3em] uppercase opacity-75">Livestock</span>
       </span>
     </Link>
   );

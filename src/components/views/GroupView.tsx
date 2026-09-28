@@ -1,4 +1,4 @@
-import type { Category, StockItem } from "@/lib/types";
+import type { Category, CategoryGroup, StockItem } from "@/lib/types";
 import { PageHeader } from "../PageHeader";
 import { StockCatalogue } from "../StockCatalogue";
 import { StockCard } from "../StockCard";
@@ -12,6 +12,7 @@ import { quickEnquiryUrl } from "@/lib/whatsapp";
 
 /** Hub page: category cards + filterable stock catalogue. */
 export function GroupView({
+  group,
   title,
   intro,
   crumbs,
@@ -19,6 +20,7 @@ export function GroupView({
   filterCategories,
   items,
 }: {
+  group?: CategoryGroup;
   title: React.ReactNode;
   intro: string;
   crumbs: { name: string; path: string }[];
@@ -28,7 +30,7 @@ export function GroupView({
 }) {
   return (
     <>
-      <PageHeader title={title} intro={<p>{intro}</p>} crumbs={crumbs} />
+      <PageHeader eyebrow={group === "poultry" ? "Poultry" : "Livestock & poultry"} title={title} intro={<p>{intro}</p>} crumbs={crumbs} />
 
       <section aria-label="Categories" className="pb-16">
         <ul className={`container-x grid grid-cols-2 gap-3 md:gap-4 ${categories.length > 4 ? "lg:grid-cols-4" : "lg:grid-cols-3"}`}>
@@ -40,7 +42,7 @@ export function GroupView({
         </ul>
       </section>
 
-      <section aria-labelledby="catalogue-heading" id="stock" className="border-t border-tan py-16 md:py-24">
+      <section aria-labelledby="catalogue-heading" id="stock" className="border-t border-line bg-paper py-16 md:py-24">
         <div className="container-x">
           <h2 id="catalogue-heading" className="mb-10 text-4xl sm:text-5xl">
             All listings

@@ -5,7 +5,8 @@ import { whatsappUrl } from "@/lib/whatsapp";
 import { deliveryFacts } from "@/data/facts";
 import { PageHeader } from "@/components/PageHeader";
 import { ContactForm } from "@/components/ContactForm";
-import { WhatsAppIcon } from "@/components/Icons";
+import { ContentFlag } from "@/components/ContentFlag";
+import { WhatsAppIcon, Pin } from "@/components/Icons";
 
 export const metadata = pageMetadata({
   title: "Contact Balilethu Livestock",
@@ -21,6 +22,7 @@ export default async function ContactPage() {
   return (
     <>
       <PageHeader
+        eyebrow="Contact"
         title={<>Talk to <em>the team</em></>}
         intro={<p>WhatsApp is the quickest way to reach us. Send what you need and where you are.</p>}
         crumbs={[{ name: "Contact", path: "/contact" }]}
@@ -33,42 +35,40 @@ export default async function ContactPage() {
               href={whatsappUrl(`Hi ${site.name}, I'd like to enquire about livestock.`)}
               target="_blank"
               rel="noopener noreferrer"
-              className="group flex items-center justify-between gap-4 bg-forest p-7 text-bone"
+              className="group flex items-center justify-between gap-4 rounded-[1.25rem] bg-forest p-7 text-bone"
             >
               <span>
-                <span className="block text-[0.95rem] text-bone/75">WhatsApp</span>
+                <span className="eyebrow block text-sand-deep">WhatsApp</span>
                 <span className="mt-2 block font-serif text-3xl sm:text-4xl">{contact.whatsappDisplay}</span>
               </span>
-              <WhatsAppIcon className="size-9" />
+              <WhatsAppIcon className="size-10 transition-transform group-hover:scale-110" />
             </a>
 
-            <dl className="mt-8 divide-y divide-tan border-y border-tan">
-              {contact.phone && <Row label="Phone">{contact.phone}</Row>}
-              {contact.email && (
-                <Row label="Email">
-                  <a href={`mailto:${contact.email}`} className="underline underline-offset-4">
-                    {contact.email}
-                  </a>
-                </Row>
-              )}
-              {contact.hours && <Row label="Hours">{contact.hours}</Row>}
+            <dl className="mt-8 divide-y divide-line border-y border-line">
+              <Row label="Phone">{contact.phone ?? <Unconfirmed />}</Row>
+              <Row label="Email">
+                {contact.email ? <a href={`mailto:${contact.email}`} className="link-underline">{contact.email}</a> : <Unconfirmed />}
+              </Row>
+              <Row label="Hours">{contact.hours ?? <Unconfirmed text="Message any time — we reply as soon as we can." />}</Row>
               <Row label="Location">
-                {contact.locality}, {contact.region}
+                <span className="inline-flex items-center gap-1.5">
+                  <Pin className="size-4 text-clay" /> {contact.locality}, {contact.region}
+                </span>
               </Row>
               <Row label="Delivery">{deliveryFacts.summary}</Row>
             </dl>
 
             <p className="mt-6 text-sm text-muted">
               Follow current stock updates on{" "}
-              <a href={site.social.facebook} target="_blank" rel="noopener noreferrer" className="text-forest underline underline-offset-4">Facebook</a>{" "}
+              <a href={site.social.facebook} target="_blank" rel="noopener noreferrer" className="font-medium text-forest link-underline">Facebook</a>{" "}
               and{" "}
-              <a href={site.social.tiktok} target="_blank" rel="noopener noreferrer" className="text-forest underline underline-offset-4">TikTok</a>.
+              <a href={site.social.tiktok} target="_blank" rel="noopener noreferrer" className="font-medium text-forest link-underline">TikTok</a>.
             </p>
           </div>
 
-          <div className="lg:col-span-6 lg:col-start-7">
+          <div className="rounded-[1.5rem] border border-line bg-paper p-6 sm:p-10 lg:col-span-7">
             <h2 className="text-3xl sm:text-4xl">Send a message</h2>
-            <p className="mt-2 mb-8 text-muted">For a quick stock enquiry, the <a href="/enquire#enquiry" className="text-forest underline underline-offset-4">enquiry form</a> is fastest.</p>
+            <p className="mt-2 mb-8 text-muted">For a quick stock enquiry, the <a href="/enquire#enquiry" className="font-medium text-forest link-underline">enquiry builder</a> is fastest.</p>
             <ContactForm interests={interests} businessName={site.name} />
           </div>
         </div>
@@ -83,6 +83,15 @@ function Row({ label, children }: { label: string; children: React.ReactNode }) 
       <dt className="text-sm text-muted">{label}</dt>
       <dd>{children}</dd>
     </div>
+  );
+}
+
+function Unconfirmed({ text = "Use WhatsApp" }: { text?: string }) {
+  return (
+    <span className="inline-flex flex-wrap items-center gap-2">
+      <span>{text}</span>
+      <ContentFlag />
+    </span>
   );
 }
 

@@ -1,18 +1,33 @@
 import type { Availability } from "@/lib/types";
+import { availabilityLabel } from "@/lib/format";
 
-const text: Record<Availability, string> = {
-  available: "Available",
-  limited: "Limited stock",
-  enquire: "Available on enquiry",
-  "sold-out": "Sold out",
+const styles: Record<Availability, { text: string }> = {
+  available: { text: "text-forest" },
+  limited: { text: "text-[#7a5413]" },
+  enquire: { text: "text-clay" },
+  "sold-out": { text: "text-muted line-through decoration-1" },
 };
 
-/** Availability as plain commercial text, not a badge. */
-export function AvailabilityBadge({ availability, className = "" }: { availability: Availability; className?: string }) {
+export function AvailabilityBadge({
+  availability,
+  tone = "light",
+  className = "",
+}: {
+  availability: Availability;
+  tone?: "light" | "overlay";
+  className?: string;
+}) {
+  const s = styles[availability];
+  const base =
+    tone === "overlay"
+      ? "bg-paper/92 backdrop-blur-sm shadow-[0_1px_0_rgba(0,0,0,0.04)]"
+      : "border border-line bg-paper";
   return (
-    <p className={`text-[0.95rem] ${availability === "sold-out" ? "text-muted" : "text-forest"} ${className}`}>
+    <span
+      className={`inline-flex items-center gap-2 rounded-full px-3 py-1 text-[0.7rem] font-semibold tracking-[0.12em] uppercase ${base} ${s.text} ${className}`}
+    >
       <span className="sr-only">Availability: </span>
-      {text[availability]}
-    </p>
+      {availabilityLabel[availability]}
+    </span>
   );
 }

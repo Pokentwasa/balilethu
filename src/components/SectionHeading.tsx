@@ -1,4 +1,5 @@
 export function SectionHeading({
+  eyebrow,
   title,
   intro,
   id,
@@ -8,6 +9,7 @@ export function SectionHeading({
   className = "",
   children,
 }: {
+  eyebrow?: string;
   title: React.ReactNode;
   intro?: React.ReactNode;
   id?: string;
@@ -17,6 +19,7 @@ export function SectionHeading({
   className?: string;
   children?: React.ReactNode;
 }) {
+  const eyebrowColor = tone === "light" ? "text-sand-deep" : "text-clay";
   const introColor = tone === "light" ? "text-bone/75" : "text-muted";
   return (
     <div
@@ -24,6 +27,7 @@ export function SectionHeading({
       data-reveal
     >
       <div className={align === "split" ? "md:col-span-7" : ""}>
+        {eyebrow && <p className={`eyebrow mb-4 ${eyebrowColor}`}>{eyebrow}</p>}
         <Tag id={id} className="text-[2.15rem] leading-[1.05] font-normal sm:text-5xl lg:text-[3.6rem]">
           {title}
         </Tag>

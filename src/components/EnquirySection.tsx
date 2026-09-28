@@ -29,6 +29,7 @@ export async function EnquirySection({
           id="enquiry-heading"
           as={headingLevel}
           tone="light"
+          eyebrow="WhatsApp enquiry"
           title="Tell us what you need."
           intro="Pick the livestock, quantity and where you are. We'll turn it into a WhatsApp message so the team can reply with availability and pricing."
           align="split"

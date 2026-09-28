@@ -14,7 +14,7 @@ export default async function LivestockPage() {
   return (
     <GroupView
       title={<>Livestock <em>for sale</em></>}
-      intro="Calves, cattle, sheep and goats — plus poultry below. Filter current listings and enquire directly on WhatsApp. Photos are illustrative."
+      intro="Calves, cattle, sheep and goats — plus poultry below. Filter current listings and enquire directly on WhatsApp."
       crumbs={[{ name: "Livestock", path: "/livestock" }]}
       categories={livestock}
       filterCategories={all}

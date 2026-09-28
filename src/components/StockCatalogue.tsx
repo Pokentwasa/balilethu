@@ -83,7 +83,7 @@ export function StockCatalogue({
         <div className="sticky top-28">
           {filters}
           {active > 0 && (
-            <button type="button" onClick={reset} className="mt-8 text-sm font-semibold text-coffee link-underline">
+            <button type="button" onClick={reset} className="mt-8 text-sm font-semibold text-clay link-underline">
               Clear filters
             </button>
           )}
@@ -91,7 +91,7 @@ export function StockCatalogue({
       </aside>
 
       <div className="lg:col-span-9">
-        <div className="mb-8 flex items-center justify-between gap-4 border-b border-tan pb-4">
+        <div className="mb-8 flex items-center justify-between gap-4 border-b border-line pb-4">
           <p className="text-sm text-muted" aria-live="polite">
             Showing <strong className="text-ink">{count}</strong> {count === 1 ? "listing" : "listings"}
           </p>
@@ -113,9 +113,9 @@ export function StockCatalogue({
           ))}
         </ul>
         {count === 0 && (
-          <div className="border-y border-tan py-10">
+          <div className="rounded-2xl border border-line p-10 text-center">
             <p className="font-serif text-2xl">No listings match those filters.</p>
-            <button type="button" onClick={reset} className="mt-4 text-sm font-semibold text-coffee link-underline">
+            <button type="button" onClick={reset} className="mt-4 text-sm font-semibold text-clay link-underline">
               Clear filters
             </button>
           </div>
@@ -125,10 +125,10 @@ export function StockCatalogue({
       {drawer && (
         <div className="fixed inset-0 z-[60] lg:hidden" role="dialog" aria-modal="true" aria-label="Filter stock">
           <button type="button" aria-label="Close filters" className="absolute inset-0 bg-ink/40" onClick={() => setDrawer(false)} />
-          <div className="absolute inset-x-0 bottom-0 max-h-[85svh] animate-drawer-in overflow-y-auto bg-bone px-5 pt-5 pb-[max(1.25rem,env(safe-area-inset-bottom))] motion-reduce:animate-none">
+          <div className="absolute inset-x-0 bottom-0 max-h-[85svh] animate-drawer-in overflow-y-auto rounded-t-3xl bg-bone px-5 pt-5 pb-[max(1.25rem,env(safe-area-inset-bottom))] motion-reduce:animate-none">
             <div className="mb-6 flex items-center justify-between">
               <p className="font-serif text-2xl">Filter stock</p>
-              <button type="button" onClick={() => setDrawer(false)} className="grid size-11 place-items-center" aria-label="Close filters">
+              <button type="button" onClick={() => setDrawer(false)} className="grid size-11 place-items-center rounded-full" aria-label="Close filters">
                 <Close className="size-5" />
               </button>
             </div>
@@ -154,8 +154,8 @@ function Chip({ active, onClick, children }: { active: boolean; onClick: () => v
       type="button"
       aria-pressed={active}
       onClick={onClick}
-      className={`min-h-11 border px-4 text-sm font-medium transition-colors ${
-        active ? "border-forest bg-forest text-bone" : "border-tan bg-bone text-ink hover:border-forest/50"
+      className={`min-h-11 rounded-full border px-4 text-sm font-medium transition-colors ${
+        active ? "border-forest bg-forest text-bone" : "border-line bg-paper text-ink hover:border-forest/50"
       }`}
     >
       {children}

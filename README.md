@@ -49,25 +49,15 @@ The content model lives in `src/lib/types.ts` (`Category`, `StockItem`, `Starter
 
 Pages read content only through the async functions in `src/lib/content.ts`. To connect a headless CMS (Sanity, Payload, Contentful…), change those functions to query the CMS and return the same types. No page code needs to change. Use ISR or on-demand revalidation so stock updates publish without a redeploy.
 
-**Adding photos:** drop files into `public/images/` using the names in [`docs/IMAGES.md`](./docs/IMAGES.md). For example, `categories/calves.jpg` or `stock/hereford-cross-calves/1.jpg`. They're picked up automatically at build time (`src/lib/images.ts`), so no code changes are needed. Photos set explicitly in the data (or later from a CMS) take priority. Until a photo exists, `Media` shows a flat forest block.
+**Adding photos:** drop files into `public/images/` using the names in [`docs/IMAGES.md`](./docs/IMAGES.md). For example, `categories/calves.jpg` or `stock/hereford-cross-calves/1.jpg`. They're picked up automatically at build time (`src/lib/images.ts`), so no code changes are needed. Photos set explicitly in the data (or later from a CMS) take priority. Until a photo exists, `Media` shows placeholder artwork.
 
 ## Colour palette
 
-Locked to five colours, defined in `src/app/globals.css` (`@theme`):
-
-| Token | Hex | Use |
-| --- | --- | --- |
-| `forest` | `#183D2F` | Navigation, WhatsApp enquiry section, closing call to action, poultry cards, primary buttons |
-| `coffee` | `#5A3426` | "Buying livestock" and "Starting with livestock?" sections, footer, livestock cards, enquire links |
-| `bone` | `#F4EFE6` | Main canvas (most of every page) |
-| `ink` | `#1F1F1B` | Headings and body text (`muted` / `ink-soft` are tints of it) |
-| `tan` | `#D8CCBC` | Borders and divider lines only |
-
-Green and brown are used in roughly equal measure as flat full-width blocks, alternating down the page. No gradients, tinted panels or extra shades. Corners are square (buttons 2px), borders are solid 1px tan, and availability or review notes are plain text rather than badges.
+Tokens live in `src/app/globals.css` (`@theme`): forest (`#1f3a2c`), earth (`#855545`, plus `earth-deep` / `earth-soft`), clay accent, sand, bone and charcoal ink. Forest and earth are the two dark surfaces. Earth is used for the "How buying works" band and the closing CTA.
 
 ## Components
 
-`Navbar` (dropdowns, mobile sheet), `Hero` + `HeroMotion`, `CategoryGrid`/`CategoryCard`, `StockCard`, `AvailabilityBadge`, `StockCatalogue` (filters), `EnquiryBuilder` + `EnquirySection`, `ProcessSteps`, `WhyBalilethu`, `BeginnerSupport`, `DeliverySection` + `CoverageMap`, `RecentDeliveries` (renders only with real photos in `public/images/deliveries/` or real quotes), `CTASection`, `Faq`, `Breadcrumbs`, `MobileCtaBar`, `ContactForm`, `StockGallery`, `Footer`. Page layouts live in `src/components/views/`.
+`Navbar` (dropdowns, mobile sheet), `Hero` + `HeroMotion`, `CategoryGrid`/`CategoryCard`, `StockCard`, `AvailabilityBadge`, `StockCatalogue` (filters), `EnquiryBuilder` + `EnquirySection`, `ProcessSteps`, `WhyBalilethu`, `BeginnerSupport`, `DeliverySection` + `CoverageMap`, `Testimonials`, `CTASection`, `Faq`, `Breadcrumbs`, `MobileCtaBar`, `ContactForm`, `StockGallery`, `Footer`. Page layouts live in `src/components/views/`.
 
 ## WhatsApp enquiries
 

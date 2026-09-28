@@ -81,16 +81,16 @@ export function EnquiryBuilder({
       className={`grid gap-8 lg:grid-cols-12 ${dark ? "text-bone" : ""}`}
       aria-describedby={fieldId("help")}
     >
-      <div className={`p-5 sm:p-8 lg:col-span-7 ${dark ? "bg-bone text-ink" : "border border-tan bg-bone"}`}>
+      <div className={`rounded-[1.5rem] p-5 sm:p-8 lg:col-span-7 ${dark ? "bg-bone text-ink" : "border border-line bg-paper"}`}>
         <p id={fieldId("help")} className="sr-only">
           Fill in the details below. Continue on WhatsApp opens a pre-filled message you can review before sending.
         </p>
 
-        <Step title="What are you looking for?">
+        <Step n="01" title="What are you looking for?">
           <div className="grid gap-4 sm:grid-cols-2">
             <div>
               <label htmlFor={fieldId("cat")} className="label">
-                Livestock type <span aria-hidden="true" className="text-coffee">*</span>
+                Livestock type <span aria-hidden="true" className="text-clay">*</span>
               </label>
               <select
                 id={fieldId("cat")}
@@ -141,7 +141,7 @@ export function EnquiryBuilder({
             </div>
             <div>
               <label htmlFor={fieldId("qty")} className="label">
-                Quantity <span aria-hidden="true" className="text-coffee">*</span>
+                Quantity <span aria-hidden="true" className="text-clay">*</span>
               </label>
               <input
                 id={fieldId("qty")}
@@ -161,7 +161,7 @@ export function EnquiryBuilder({
           </div>
         </Step>
 
-        <Step title="Where are you?">
+        <Step n="02" title="Where are you?">
           <div className="grid gap-4 sm:grid-cols-2">
             <div>
               <label htmlFor={fieldId("prov")} className="label">
@@ -194,8 +194,8 @@ export function EnquiryBuilder({
               {(["Delivery", "Collection"] as const).map((f) => (
                 <label
                   key={f}
-                  className={`flex min-h-12 cursor-pointer items-center justify-center gap-2 border px-4 text-sm font-semibold transition-colors has-[:focus-visible]:outline-2 has-[:focus-visible]:outline-coffee ${
-                    fulfilment === f ? "border-forest bg-forest text-bone" : "border-tan bg-bone hover:border-forest/40"
+                  className={`flex min-h-12 cursor-pointer items-center justify-center gap-2 rounded-xl border px-4 text-sm font-semibold transition-colors has-[:focus-visible]:outline-2 has-[:focus-visible]:outline-clay ${
+                    fulfilment === f ? "border-forest bg-forest text-bone" : "border-line bg-bone hover:border-forest/40"
                   }`}
                 >
                   <input
@@ -210,7 +210,7 @@ export function EnquiryBuilder({
                 </label>
               ))}
             </div>
-            <p className={`mt-3 text-sm leading-relaxed ${outsideDelivery ? "border-l-2 border-coffee pl-3 text-coffee" : "text-muted"}`} role={outsideDelivery ? "status" : undefined}>
+            <p className={`mt-3 text-sm leading-relaxed ${outsideDelivery ? "rounded-lg bg-clay/10 p-3 text-clay" : "text-muted"}`} role={outsideDelivery ? "status" : undefined}>
               {outsideDelivery
                 ? `Delivery covers KwaZulu-Natal and the Eastern Cape (up to Mount Frere). From ${province}, you'll need to arrange your own transport to collect.`
                 : "Delivery: KwaZulu-Natal and Eastern Cape (up to Mount Frere). Other provinces: own transport for collection."}
@@ -218,7 +218,7 @@ export function EnquiryBuilder({
           </fieldset>
         </Step>
 
-        <Step title="Anything else?" last>
+        <Step n="03" title="Anything else?" last>
           <div className="grid gap-4 sm:grid-cols-2">
             <div className="sm:col-span-2">
               <label htmlFor={fieldId("msg")} className="label">
@@ -251,9 +251,9 @@ export function EnquiryBuilder({
 
       <div className="lg:col-span-5">
         <div className="lg:sticky lg:top-28">
-          <p className={`eyebrow mb-3 ${dark ? "text-tan" : "text-muted"}`}>Your WhatsApp message</p>
-          <div className={`border p-5 ${dark ? "border-bone/30" : "border-tan"}`}>
-            <div className="text-[0.95rem] leading-relaxed whitespace-pre-wrap">
+          <p className={`eyebrow mb-3 ${dark ? "text-sand-deep" : "text-muted"}`}>Your WhatsApp message</p>
+          <div className="relative rounded-[1.5rem] bg-[#e7dfcd] p-4 sm:p-5">
+            <div className="ml-auto max-w-[95%] rounded-2xl rounded-tr-sm bg-[#dcf2c8] p-4 text-[0.92rem] leading-relaxed whitespace-pre-wrap text-ink shadow-sm">
               <output htmlFor={`${fieldId("cat")} ${fieldId("qty")}`} aria-live="polite" className="block">
                 {text}
               </output>
@@ -264,7 +264,7 @@ export function EnquiryBuilder({
             Continue on WhatsApp
           </button>
           {touched && !valid && (
-            <p className="mt-3 text-sm text-coffee" role="alert">
+            <p className="mt-3 text-sm text-clay" role="alert">
               Please add the livestock type and quantity.
             </p>
           )}
@@ -277,11 +277,12 @@ export function EnquiryBuilder({
   );
 }
 
-function Step({ title, children, last = false }: { title: string; children: React.ReactNode; last?: boolean }) {
+function Step({ n, title, children, last = false }: { n: string; title: string; children: React.ReactNode; last?: boolean }) {
   return (
-    <fieldset className={last ? "" : "mb-8 border-b border-tan pb-8"}>
-      <legend className="mb-5 font-serif text-2xl">
-        {title}
+    <fieldset className={last ? "" : "mb-8 border-b border-line pb-8"}>
+      <legend className="mb-5 flex items-baseline gap-3">
+        <span className="font-mono text-xs text-clay">{n}</span>
+        <span className="font-serif text-2xl">{title}</span>
       </legend>
       {children}
     </fieldset>
@@ -290,7 +291,7 @@ function Step({ title, children, last = false }: { title: string; children: Reac
 
 function FieldError({ id, children }: { id: string; children: React.ReactNode }) {
   return (
-    <p id={id} className="mt-1.5 text-sm text-coffee">
+    <p id={id} className="mt-1.5 text-sm text-clay">
       {children}
     </p>
   );

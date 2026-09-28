@@ -15,7 +15,7 @@ export function MobileCtaBar({
   secondary?: { label: string; href: string };
 }) {
   return (
-    <div className="fixed inset-x-0 bottom-0 z-40 border-t border-tan bg-bone px-4 pt-3 pb-[max(0.75rem,env(safe-area-inset-bottom))] lg:hidden">
+    <div className="fixed inset-x-0 bottom-0 z-40 border-t border-line bg-bone/95 px-4 pt-3 pb-[max(0.75rem,env(safe-area-inset-bottom))] backdrop-blur-md lg:hidden">
       <div className="flex gap-2">
         {secondary && (
           <Link href={secondary.href} className="btn btn-outline !min-h-12 flex-1 !px-3 text-sm whitespace-nowrap text-forest">
