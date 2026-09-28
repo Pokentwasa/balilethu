@@ -49,7 +49,7 @@ The content model lives in `src/lib/types.ts` (`Category`, `StockItem`, `Starter
 
 Pages read content only through the async functions in `src/lib/content.ts`. To connect a headless CMS (Sanity, Payload, Contentful…), change those functions to query the CMS and return the same types. No page code needs to change. Use ISR or on-demand revalidation so stock updates publish without a redeploy.
 
-**Adding photos:** drop files into `public/images/` using the names in [`public/images/README.md`](./public/images/README.md). For example, `categories/calves.jpg` or `stock/hereford-cross-calves/1.jpg`. They're picked up automatically at build time (`src/lib/images.ts`), so no code changes are needed. Photos set explicitly in the data (or later from a CMS) take priority. Until a photo exists, `Media` shows placeholder artwork.
+**Adding photos:** drop files into `public/images/` using the names in [`docs/IMAGES.md`](./docs/IMAGES.md). For example, `categories/calves.jpg` or `stock/hereford-cross-calves/1.jpg`. They're picked up automatically at build time (`src/lib/images.ts`), so no code changes are needed. Photos set explicitly in the data (or later from a CMS) take priority. Until a photo exists, `Media` shows placeholder artwork.
 
 ## Colour palette
 
