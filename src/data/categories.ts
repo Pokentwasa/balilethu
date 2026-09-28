@@ -13,7 +13,6 @@ export const categories: Category[] = [
     name: "Calves",
     singular: "calf",
     tagline: "Beef-cross and dairy-cross calves, including bottle-fed calves.",
-    indexLine: "Beef-cross & dairy-cross",
     heading: "Calves for sale",
     intro: [
       "Calves are where Balilethu started. The business began in 2023 as Balilethu Calves, supplying bottle-fed calves to people who want to raise their own animals.",
@@ -65,7 +64,6 @@ export const categories: Category[] = [
     name: "Cattle",
     singular: "head of cattle",
     tagline: "Breeding cattle and pregnant cows, including Nguni and Brahman.",
-    indexLine: "Breeding cattle & pregnant cows",
     heading: "Cattle for sale",
     intro: [
       "Alongside calves, Balilethu supplies breeding cattle and pregnant cows for farmers building or growing a herd.",
@@ -104,7 +102,6 @@ export const categories: Category[] = [
     name: "Sheep",
     singular: "sheep",
     tagline: "Breeding sheep and lambs.",
-    indexLine: "Breeding sheep & lambs",
     heading: "Sheep for sale",
     intro: [
       "Balilethu supplies breeding sheep and lambs for households and farmers adding small stock.",
@@ -139,7 +136,6 @@ export const categories: Category[] = [
     name: "Goats",
     singular: "goat",
     tagline: "Goats supplied on enquiry.",
-    indexLine: "Available on enquiry",
     heading: "Goats for sale",
     intro: [
       "Goats are supplied on enquiry. Tell us how many you need, what they are for and where you are, and we'll let you know what can be sourced and when.",
@@ -173,7 +169,6 @@ export const categories: Category[] = [
     name: "Layers",
     singular: "layer hen",
     tagline: "Lohmann Brown laying hens.",
-    indexLine: "Lohmann Brown laying hens",
     heading: "Layer chickens for sale",
     intro: [
       "Balilethu supplies Lohmann Brown layers — a brown egg-laying hybrid widely used by households and small egg producers.",
@@ -211,7 +206,6 @@ export const categories: Category[] = [
     name: "Broilers",
     singular: "broiler",
     tagline: "Broiler chickens for meat production.",
-    indexLine: "Raised for meat",
     heading: "Broiler chickens for sale",
     intro: [
       "Broiler chickens for households and small poultry businesses raising birds for meat.",
@@ -246,7 +240,6 @@ export const categories: Category[] = [
     name: "Day-old chicks",
     singular: "chick",
     tagline: "Day-old chicks for starting or restocking a flock.",
-    indexLine: "Supplied in batches",
     heading: "Day-old chicks for sale",
     intro: [
       "Day-old chicks for people starting a flock or restocking. Chicks need warmth, feed and water ready on arrival, so plan your brooding setup before your delivery or collection date.",

@@ -1,6 +1,6 @@
 # Image slots (for developers)
 
-Photos are uploaded unsorted into `public/images/`, then sorted into the structure below. The site picks up files at build time by these names (`src/lib/images.ts`); a plain "Photo to follow" plate shows until a file exists.
+Photos are uploaded unsorted into `public/images/`, then sorted into the structure below. The site picks up files at build time by these names (`src/lib/images.ts`); placeholder artwork shows until a file exists.
 
 **Formats:** `.jpg`, `.jpeg`, `.png`, `.webp` or `.avif`.
 **Size:** landscape, at least 1600px wide (2400px for the hero). The site resizes
@@ -61,10 +61,14 @@ listing's card.
 | `starter-products.jpg` | Banner on /starter-products |
 | `about.jpg` | Banner on /about (team, farm or animals) |
 
-## `deliveries/` — "Recent deliveries" (homepage)
+## `gallery/` — "Livestock on its way" (homepage)
 
-Real Balilethu delivery, loading or collection photos only, any file names. The
-section appears once there are at least three; up to five are shown, in file-name order.
+| File | Suggested photo |
+| --- | --- |
+| `delivery-day.jpg` | Large tile: a delivery or loading |
+| `calves-loading.jpg` | Calves ready to go |
+| `poultry-collection.jpg` | A poultry order or collection |
+| `on-the-farm.jpg` | Wide farm shot |
 
 ## Tips
 

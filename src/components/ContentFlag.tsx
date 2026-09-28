@@ -8,7 +8,7 @@ export function ContentFlag({ children = "To confirm", className = "" }: { child
   if (!site.showContentFlags) return null;
   return (
     <span
-      className={`inline-flex items-center gap-1.5 border border-dashed border-clay/60 bg-clay/5 px-2.5 py-0.5 text-[0.68rem] font-semibold tracking-wide text-clay uppercase ${className}`}
+      className={`inline-flex items-center gap-1.5 rounded-full border border-dashed border-clay/60 bg-clay/5 px-2.5 py-0.5 text-[0.68rem] font-semibold tracking-wide text-clay uppercase ${className}`}
     >
       <span className="size-1.5 rounded-full bg-clay" aria-hidden="true" />
       {children}

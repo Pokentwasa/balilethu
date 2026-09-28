@@ -17,14 +17,18 @@ function withCategoryImage(c: Category): Category {
 }
 
 /**
- * Listing photos: explicit data first, then public/images/stock/<slug>/.
- * No category-photo fallback: a listing without its own photo shows a
- * catalogue plate instead of repeating another image. Folder photos are
- * labelled illustrative while `stockPhotosAreIllustrative` is on.
+ * Listing photos: explicit data first, then public/images/stock/<slug>/,
+ * then the category photo. Folder and category photos are labelled
+ * illustrative while `stockPhotosAreIllustrative` is on.
  */
 function withStockImages(s: StockItem): StockItem {
   if (s.images.length) return s;
-  const images = findImages(`stock/${s.slug}`, s.name);
+  let images = findImages(`stock/${s.slug}`, s.name);
+  if (!images.length) {
+    const c = getCategorySync(s.category);
+    const fallback = findImage(`categories/${c.slug}`, `${c.name}`);
+    images = fallback ? [fallback] : [];
+  }
   return { ...s, images: images.map((img) => ({ ...img, illustrative: stockPhotosAreIllustrative })) };
 }
 
@@ -54,16 +58,7 @@ export async function getStock(filter?: { category?: CategorySlug; group?: Categ
 }
 
 export async function getFeaturedStock(limit = 6): Promise<StockItem[]> {
-  // Photographed listings first, then one per category, so the selection
-  // shows range rather than repeats or empty plates.
-  const featured = stock
-    .filter((s) => s.featured)
-    .map(withStockImages)
-    .sort((a, b) => Number(b.images.length > 0) - Number(a.images.length > 0));
-  const seen = new Set<string>();
-  const spread = featured.filter((s) => !seen.has(s.category) && seen.add(s.category));
-  const rest = featured.filter((s) => !spread.includes(s));
-  return [...spread, ...rest].slice(0, limit);
+  return stock.filter((s) => s.featured).slice(0, limit).map(withStockImages);
 }
 
 export async function getStockItem(category: string, slug: string): Promise<StockItem | undefined> {

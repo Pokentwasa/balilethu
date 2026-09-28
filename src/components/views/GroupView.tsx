@@ -1,10 +1,8 @@
-import type { Category, StockItem } from "@/lib/types";
+import type { Category, CategoryGroup, StockItem } from "@/lib/types";
 import { PageHeader } from "../PageHeader";
 import { StockCatalogue } from "../StockCatalogue";
 import { StockCard } from "../StockCard";
-import Link from "next/link";
-import { categoryHref } from "@/lib/routes";
-import { ArrowRight } from "../Icons";
+import { CategoryCard } from "../CategoryCard";
 import { CTASection } from "../CTASection";
 import { MobileCtaBar } from "../MobileCtaBar";
 import { JsonLd } from "../JsonLd";
@@ -14,6 +12,7 @@ import { quickEnquiryUrl } from "@/lib/whatsapp";
 
 /** Hub page: category cards + filterable stock catalogue. */
 export function GroupView({
+  group,
   title,
   intro,
   crumbs,
@@ -21,6 +20,7 @@ export function GroupView({
   filterCategories,
   items,
 }: {
+  group?: CategoryGroup;
   title: React.ReactNode;
   intro: string;
   crumbs: { name: string; path: string }[];
@@ -30,24 +30,22 @@ export function GroupView({
 }) {
   return (
     <>
-      <PageHeader title={title} intro={<p>{intro}</p>} crumbs={crumbs} />
+      <PageHeader eyebrow={group === "poultry" ? "Poultry" : "Livestock & poultry"} title={title} intro={<p>{intro}</p>} crumbs={crumbs} />
 
-      <nav aria-label="Categories" className="container-x">
-        <ul className="flex flex-wrap gap-x-8 gap-y-2 border-y border-line py-4">
-          {categories.map((c) => (
+      <section aria-label="Categories" className="pb-16">
+        <ul className={`container-x grid grid-cols-2 gap-3 md:gap-4 ${categories.length > 4 ? "lg:grid-cols-4" : "lg:grid-cols-3"}`}>
+          {categories.map((c, i) => (
             <li key={c.slug}>
-              <Link href={categoryHref(c)} className="arrow-link font-serif text-2xl font-normal">
-                {c.name} <ArrowRight className="size-4" />
-              </Link>
+              <CategoryCard category={c} index={i} />
             </li>
           ))}
         </ul>
-      </nav>
+      </section>
 
-      <section aria-labelledby="catalogue-heading" id="stock" className="py-16 md:py-24">
+      <section aria-labelledby="catalogue-heading" id="stock" className="border-t border-line bg-paper py-16 md:py-24">
         <div className="container-x">
-          <h2 id="catalogue-heading" className="sr-only">
-            Listings
+          <h2 id="catalogue-heading" className="mb-10 text-4xl sm:text-5xl">
+            All listings
           </h2>
           <StockCatalogue
             categories={filterCategories.map((c) => ({ slug: c.slug, name: c.name, group: c.group }))}

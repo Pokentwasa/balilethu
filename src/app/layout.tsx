@@ -1,5 +1,5 @@
 import type { Metadata, Viewport } from "next";
-import { Archivo, Newsreader } from "next/font/google";
+import { Fraunces, Inter } from "next/font/google";
 import "./globals.css";
 import { site } from "@/config/site";
 import { getCategories } from "@/lib/content";
@@ -10,15 +10,15 @@ import { Footer } from "@/components/Footer";
 import { JsonLd } from "@/components/JsonLd";
 import { RevealInit } from "@/components/RevealInit";
 
-const newsreader = Newsreader({
+const fraunces = Fraunces({
   subsets: ["latin"],
-  variable: "--font-newsreader",
+  variable: "--font-fraunces",
   display: "swap",
-  axes: ["opsz"],
+  axes: ["opsz", "SOFT"],
   style: ["normal", "italic"],
 });
 
-const archivo = Archivo({ subsets: ["latin"], variable: "--font-archivo", display: "swap" });
+const inter = Inter({ subsets: ["latin"], variable: "--font-inter", display: "swap" });
 
 export const metadata: Metadata = {
   metadataBase: new URL(site.url),
@@ -52,7 +52,7 @@ export default async function RootLayout({ children }: { children: React.ReactNo
   }));
 
   return (
-    <html lang="en-ZA" className={`${newsreader.variable} ${archivo.variable}`}>
+    <html lang="en-ZA" className={`${fraunces.variable} ${inter.variable}`}>
       <body className="min-h-screen">
         <Navbar groups={groups} whatsappDisplay={site.contact.whatsappDisplay} />
         <main id="main">{children}</main>

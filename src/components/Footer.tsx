@@ -13,16 +13,16 @@ export function Footer() {
   const year = new Date().getFullYear();
 
   return (
-    <footer className="bg-ink pb-28 text-bone/75 lg:pb-0">
+    <footer className="bg-forest-deep pb-28 text-bone/80 lg:pb-0">
       <div className="container-x grid gap-12 py-16 md:grid-cols-12 md:py-20">
         <div className="md:col-span-4">
           <Logo tone="light" />
-          <p className="mt-6 max-w-xs">
-            Livestock and poultry supplier. {site.contact.locality}, {site.contact.region}.
+          <p className="mt-6 max-w-sm leading-relaxed">
+            Quality livestock. Practical support. Straightforward buying. Calves, cattle, sheep, goats and poultry.
           </p>
           <a
             href={whatsappUrl()}
-            className="arrow-link mt-5 text-bone"
+            className="mt-6 inline-flex items-center gap-2 font-semibold text-bone link-underline"
             target="_blank"
             rel="noopener noreferrer"
           >
@@ -44,7 +44,7 @@ export function Footer() {
           ]}
         />
         <div className="md:col-span-2">
-          <h2 className="label-sm mb-4 text-bone/50">Delivery</h2>
+          <h2 className="eyebrow mb-4 text-sand-deep">Delivery</h2>
           <p className="text-sm leading-relaxed">{deliveryFacts.summary}</p>
           <p className="mt-3 text-sm leading-relaxed text-bone/60">No deliveries or sales for export outside South Africa.</p>
         </div>
@@ -71,7 +71,7 @@ export function Footer() {
 function FooterCol({ title, links }: { title: string; links: { label: string; href: string }[] }) {
   return (
     <div className="md:col-span-2">
-      <h2 className="label-sm mb-4 text-bone/50">{title}</h2>
+      <h2 className="eyebrow mb-4 text-sand-deep">{title}</h2>
       <ul className="space-y-2.5">
         {links.map((l) => (
           <li key={l.href}>
