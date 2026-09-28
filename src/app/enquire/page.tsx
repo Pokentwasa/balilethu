@@ -20,7 +20,7 @@ export default async function EnquirePage({ searchParams }: { searchParams: Prom
         </div>
       </div>
       <EnquirySection headingLevel="h1" initialCategory={type} initialItem={item} />
-      <ProcessSteps bordered={false} />
+      <ProcessSteps tone="plain" />
     </>
   );
 }

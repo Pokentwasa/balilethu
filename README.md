@@ -57,13 +57,13 @@ Locked to five colours, defined in `src/app/globals.css` (`@theme`):
 
 | Token | Hex | Use |
 | --- | --- | --- |
-| `forest` | `#183D2F` | Navigation, footer, key sections, primary buttons, active states |
-| `coffee` | `#5A3426` | Secondary accent: closing call-to-action block, secondary links |
+| `forest` | `#183D2F` | Navigation, WhatsApp enquiry section, closing call to action, poultry cards, primary buttons |
+| `coffee` | `#5A3426` | "Buying livestock" and "Starting with livestock?" sections, footer, livestock cards, enquire links |
 | `bone` | `#F4EFE6` | Main canvas (most of every page) |
 | `ink` | `#1F1F1B` | Headings and body text (`muted` / `ink-soft` are tints of it) |
 | `tan` | `#D8CCBC` | Borders and divider lines only |
 
-No gradients, tinted panels or extra shades. Corners are square (buttons 2px), borders are solid 1px tan, and availability or review notes are plain text rather than badges.
+Green and brown are used in roughly equal measure as flat full-width blocks, alternating down the page. No gradients, tinted panels or extra shades. Corners are square (buttons 2px), borders are solid 1px tan, and availability or review notes are plain text rather than badges.
 
 ## Components
 

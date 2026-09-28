@@ -7,10 +7,12 @@ import { ArrowRight } from "./Icons";
 
 export function CategoryCard({ category, size = "default" }: { category: Category; index?: number; size?: "default" | "large" | "wide" }) {
   const tall = size === "large";
+  // Livestock in coffee brown, poultry in forest green.
+  const band = category.group === "livestock" ? "bg-coffee" : "bg-forest";
   return (
     <Link
       href={categoryHref(category)}
-      className="group relative block h-full overflow-hidden bg-forest text-bone"
+      className={`group relative block h-full overflow-hidden text-bone ${band}`}
     >
       <Media
         image={category.image}
@@ -24,7 +26,7 @@ export function CategoryCard({ category, size = "default" }: { category: Categor
         }
         imgClassName="transition-transform duration-[1.2s] ease-[var(--ease-out-soft)] group-hover:scale-[1.03]"
       />
-      <div className="absolute inset-x-0 bottom-0 bg-forest px-5 py-4 sm:px-6">
+      <div className={`absolute inset-x-0 bottom-0 px-5 py-4 sm:px-6 ${band}`}>
         <h3 className={`font-serif leading-none ${tall ? "text-4xl sm:text-5xl" : "text-[1.9rem]"}`}>{category.name}</h3>
         <div className="mt-2 flex items-baseline justify-between gap-4 text-[0.95rem]">
           <span className="text-bone/80">

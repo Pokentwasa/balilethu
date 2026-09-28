@@ -18,7 +18,7 @@ export function DeliverySection({ headingLevel = "h2", showLink = true }: { head
       <div className="container-x grid gap-14 lg:grid-cols-12 lg:gap-16">
         <div className="lg:col-span-6" data-reveal>
           <H id="delivery-heading" className="text-[2.4rem] leading-[1.02] sm:text-5xl lg:text-6xl">
-            Delivered in {site.delivery.provinces[0]} <em className="text-forest">and the {site.delivery.provinces[1]}.</em>
+            Delivered in {site.delivery.provinces[0]} <em className="text-coffee">and the {site.delivery.provinces[1]}.</em>
           </H>
           <p className="mt-5 max-w-lg text-lg leading-relaxed text-muted">
             Buying from further away? You&apos;re welcome to — arrange your own transport and collect.
