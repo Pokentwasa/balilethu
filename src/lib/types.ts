@@ -25,6 +25,8 @@ export interface StockImage {
   alt: string;
   width: number;
   height: number;
+  /** True when the photo is representative, not the actual animal for sale. */
+  illustrative?: boolean;
 }
 
 export interface FaqItem {

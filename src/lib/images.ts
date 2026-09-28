@@ -1,12 +1,13 @@
 /**
- * Picks up photos dropped into /public/images by file-name convention,
- * so adding a photo needs no code change. See public/images/README.md.
+ * Picks up photos in /public/images by file-name convention, so adding a
+ * photo needs no code change. Slot names are listed in docs/IMAGES.md.
  *
  * Server-only (uses the filesystem at build/render time).
  */
 import fs from "node:fs";
 import path from "node:path";
 import type { StockImage } from "./types";
+import { photoAlts } from "@/data/photos";
 
 const ROOT = path.join(process.cwd(), "public", "images");
 const EXTENSIONS = [".jpg", ".jpeg", ".png", ".webp", ".avif"];
@@ -15,8 +16,10 @@ const EXTENSIONS = [".jpg", ".jpeg", ".png", ".webp", ".avif"];
 const W = 1600;
 const H = 1200;
 
-function toImage(relative: string, alt: string): StockImage {
-  return { src: `/images/${relative.split(path.sep).join("/")}`, alt, width: W, height: H };
+function toImage(relative: string, fallbackAlt: string): StockImage {
+  const posix = relative.split(path.sep).join("/");
+  const key = posix.replace(/\.[^.]+$/, "");
+  return { src: `/images/${posix}`, alt: photoAlts[key] ?? fallbackAlt, width: W, height: H };
 }
 
 /** Finds `public/images/<slot>.<ext>`, e.g. slot "categories/calves". */

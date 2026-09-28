@@ -52,8 +52,11 @@ so don't reuse these figures without a current list from the client.
   Starter *packages* are confirmed (calf packages). Edit `src/data/support.ts`.
 - **Testimonials:** none supplied. Add real ones to `testimonials` in
   `src/data/support.ts`. Placeholders show only while content flags are on.
-- **Photography:** no Balilethu photos were available. Every image slot renders
-  placeholder landscape artwork with a "Photo: …" label while flags are on.
+- **Photography:** the site currently uses Unsplash stock photos, not Balilethu's
+  own animals. Listing photos are labelled "Illustrative photo"; turn that off with
+  `stockPhotosAreIllustrative` in `src/data/photos.ts` once real listing photos are in.
+  Still missing: a broilers photo (white meat birds) and real delivery/customer photos
+  for the "Livestock on its way" gallery. Those slots show placeholder artwork.
 - **Phone line, email, business hours:** not confirmed, so they're hidden or shown as "Use WhatsApp".
 - **Availability:** every listing is "Enquire" until a live stock count exists.
 

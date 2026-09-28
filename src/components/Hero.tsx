@@ -19,6 +19,7 @@ export function Hero({ image }: { image: StockImage | null }) {
             sizes="100vw"
             priority
             className="absolute inset-0"
+            imgClassName="object-[68%_center] lg:object-center"
             caption="Hero — cattle in the field"
             captionClassName="top-24 right-5"
           />

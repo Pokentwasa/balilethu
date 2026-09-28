@@ -8,15 +8,28 @@ import { stock } from "@/data/stock";
 import { starterProducts, testimonials } from "@/data/support";
 import type { Category, CategoryGroup, CategorySlug, StockItem } from "./types";
 import { findImage, findImages } from "./images";
+import { stockPhotosAreIllustrative } from "@/data/photos";
 
 // Photos dropped into /public/images are used when the data has none
 // (see public/images/README.md).
 function withCategoryImage(c: Category): Category {
-  return c.image ? c : { ...c, image: findImage(`categories/${c.slug}`, `${c.name} — Balilethu Livestock`) };
+  return c.image ? c : { ...c, image: findImage(`categories/${c.slug}`, c.name) };
 }
 
+/**
+ * Listing photos: explicit data first, then public/images/stock/<slug>/,
+ * then the category photo. Folder and category photos are labelled
+ * illustrative while `stockPhotosAreIllustrative` is on.
+ */
 function withStockImages(s: StockItem): StockItem {
-  return s.images.length ? s : { ...s, images: findImages(`stock/${s.slug}`, `${s.name} — Balilethu Livestock`) };
+  if (s.images.length) return s;
+  let images = findImages(`stock/${s.slug}`, s.name);
+  if (!images.length) {
+    const c = getCategorySync(s.category);
+    const fallback = findImage(`categories/${c.slug}`, `${c.name}`);
+    images = fallback ? [fallback] : [];
+  }
+  return { ...s, images: images.map((img) => ({ ...img, illustrative: stockPhotosAreIllustrative })) };
 }
 
 export async function getCategories(group?: CategoryGroup): Promise<Category[]> {

@@ -39,14 +39,17 @@ export function Media({
   return (
     <div className={`${position} overflow-hidden bg-sand ${className}`}>
       {image ? (
-        <Image
-          src={image.src}
-          alt={image.alt}
-          fill
-          sizes={sizes}
-          priority={priority}
-          className={`object-cover ${imgClassName}`}
-        />
+        <>
+          <Image
+            src={image.src}
+            alt={image.alt}
+            fill
+            sizes={sizes}
+            priority={priority}
+            className={`object-cover ${imgClassName}`}
+          />
+          {image.illustrative && <IllustrativeTag className={captionClassName} />}
+        </>
       ) : (
         <>
           <div className={`absolute inset-0 ${imgClassName}`}>
@@ -60,5 +63,14 @@ export function Media({
         </>
       )}
     </div>
+  );
+}
+
+/** Tells buyers a listing photo is representative, not the animal for sale. */
+export function IllustrativeTag({ className = "bottom-3 left-3" }: { className?: string }) {
+  return (
+    <span className={`absolute z-10 ${className} rounded-full bg-ink/55 px-2.5 py-1 text-[0.62rem] font-medium tracking-wide text-bone/90 uppercase backdrop-blur-sm`}>
+      Illustrative photo
+    </span>
   );
 }
