@@ -1,4 +1,4 @@
-import type { Category, CategoryGroup, StockItem } from "@/lib/types";
+import type { Category, StockItem } from "@/lib/types";
 import { PageHeader } from "../PageHeader";
 import { StockCatalogue } from "../StockCatalogue";
 import { StockCard } from "../StockCard";
@@ -12,7 +12,6 @@ import { quickEnquiryUrl } from "@/lib/whatsapp";
 
 /** Hub page: category cards + filterable stock catalogue. */
 export function GroupView({
-  group,
   title,
   intro,
   crumbs,
@@ -20,7 +19,6 @@ export function GroupView({
   filterCategories,
   items,
 }: {
-  group?: CategoryGroup;
   title: React.ReactNode;
   intro: string;
   crumbs: { name: string; path: string }[];
@@ -30,7 +28,7 @@ export function GroupView({
 }) {
   return (
     <>
-      <PageHeader eyebrow={group === "poultry" ? "Poultry" : "Livestock & poultry"} title={title} intro={<p>{intro}</p>} crumbs={crumbs} />
+      <PageHeader title={title} intro={<p>{intro}</p>} crumbs={crumbs} />
 
       <section aria-label="Categories" className="pb-16">
         <ul className={`container-x grid grid-cols-2 gap-3 md:gap-4 ${categories.length > 4 ? "lg:grid-cols-4" : "lg:grid-cols-3"}`}>

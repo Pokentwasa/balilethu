@@ -48,9 +48,9 @@ export const site = {
 
   /**
    * Shows small "to confirm" markers next to unverified or placeholder content.
-   * Set NEXT_PUBLIC_SHOW_CONTENT_FLAGS=false for production.
+   * Off by default; set NEXT_PUBLIC_SHOW_CONTENT_FLAGS=true during content review.
    */
-  showContentFlags: process.env.NEXT_PUBLIC_SHOW_CONTENT_FLAGS !== "false",
+  showContentFlags: process.env.NEXT_PUBLIC_SHOW_CONTENT_FLAGS === "true",
 } as const;
 
 export const SA_PROVINCES = [

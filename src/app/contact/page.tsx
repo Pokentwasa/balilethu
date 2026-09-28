@@ -22,7 +22,6 @@ export default async function ContactPage() {
   return (
     <>
       <PageHeader
-        eyebrow="Contact"
         title={<>Talk to <em>the team</em></>}
         intro={<p>WhatsApp is the quickest way to reach us. Send what you need and where you are.</p>}
         crumbs={[{ name: "Contact", path: "/contact" }]}
@@ -35,7 +34,7 @@ export default async function ContactPage() {
               href={whatsappUrl(`Hi ${site.name}, I'd like to enquire about livestock.`)}
               target="_blank"
               rel="noopener noreferrer"
-              className="group flex items-center justify-between gap-4 rounded-[1.25rem] bg-forest p-7 text-bone"
+              className="group flex items-center justify-between gap-4 rounded-sm bg-forest p-7 text-bone"
             >
               <span>
                 <span className="eyebrow block text-sand-deep">WhatsApp</span>
@@ -66,7 +65,7 @@ export default async function ContactPage() {
             </p>
           </div>
 
-          <div className="rounded-[1.5rem] border border-line bg-paper p-6 sm:p-10 lg:col-span-7">
+          <div className="rounded-sm border border-line bg-paper p-6 sm:p-10 lg:col-span-7">
             <h2 className="text-3xl sm:text-4xl">Send a message</h2>
             <p className="mt-2 mb-8 text-muted">For a quick stock enquiry, the <a href="/enquire#enquiry" className="font-medium text-forest link-underline">enquiry builder</a> is fastest.</p>
             <ContactForm interests={interests} businessName={site.name} />

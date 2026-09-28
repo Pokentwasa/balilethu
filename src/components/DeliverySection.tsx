@@ -17,14 +17,13 @@ export function DeliverySection({ headingLevel = "h2", showLink = true }: { head
     <section aria-labelledby="delivery-heading" className="bg-sand py-20 md:py-28">
       <div className="container-x grid gap-14 lg:grid-cols-12 lg:gap-16">
         <div className="lg:col-span-6" data-reveal>
-          <p className="eyebrow mb-4 text-clay">Delivery & collection</p>
           <H id="delivery-heading" className="text-[2.4rem] leading-[1.02] sm:text-5xl lg:text-6xl">
             Delivered in {site.delivery.provinces[0]} <em className="text-forest-soft">and the {site.delivery.provinces[1]}.</em>
           </H>
           <p className="mt-5 max-w-lg text-lg leading-relaxed text-muted">
             Buying from further away? You&apos;re welcome to — arrange your own transport and collect.
           </p>
-          <div className="mt-10 rounded-[1.5rem] bg-bone p-4 sm:p-6">
+          <div className="mt-10 rounded-sm bg-bone p-4 sm:p-6">
             <CoverageMap deliveryProvinces={site.delivery.provinces} />
           </div>
         </div>

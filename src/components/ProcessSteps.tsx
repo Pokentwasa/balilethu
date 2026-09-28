@@ -20,9 +20,8 @@ export function ProcessSteps({ tone = "earth" }: { tone?: keyof typeof tones }) 
       <div className="container-x">
         <SectionHeading
           id="process-heading"
-          eyebrow="How buying works"
-          title="Four steps, no guesswork."
-          intro="No online checkout and no surprises. You enquire, we confirm what's available, and you finalise directly with the team."
+          title="Buying livestock"
+          intro="Browse current stock, contact the team and confirm collection or delivery. There is no online checkout."
           align="split"
           tone={t.heading}
         />

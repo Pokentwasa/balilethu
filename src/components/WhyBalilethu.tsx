@@ -34,15 +34,14 @@ export function WhyBalilethu() {
       <div className="container-x">
         <SectionHeading
           id="why-heading"
-          eyebrow="Why Balilethu"
-          title={<>Practical livestock buying, <em className="text-forest-soft">done properly.</em></>}
+          title="Livestock, poultry and support from one supplier."
           align="split"
           intro="What you can expect when you buy from Balilethu Livestock."
         />
         <div className="mt-14 grid gap-x-6 gap-y-12 sm:grid-cols-2 lg:grid-cols-4">
           {reasons.map((r, i) => (
             <article key={r.title} data-reveal style={{ ["--reveal-delay" as string]: `${i * 80}ms` }}>
-              <div data-reveal="clip" className="overflow-hidden rounded-[1.1rem]">
+              <div data-reveal="clip" className="overflow-hidden rounded-sm">
                 <Media image={null} slot={r.slot} seed={r.seed} sizes="(min-width: 1024px) 25vw, (min-width: 640px) 50vw, 100vw" className={i % 2 ? "aspect-[4/5]" : "aspect-[4/4.4]"} caption={r.title} />
               </div>
               <h3 className="mt-5 font-serif text-2xl leading-tight">{r.title}</h3>

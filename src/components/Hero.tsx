@@ -31,7 +31,6 @@ export function Hero({ image }: { image: StockImage | null }) {
 
       <div className="container-x pt-32 pb-14 md:pb-20">
         <div className="max-w-5xl">
-          <p data-hero-fade className="eyebrow mb-6 text-sand">Balilethu Livestock</p>
           <h1 id="hero-heading" className="text-[3.1rem] leading-[0.95] font-light sm:text-7xl lg:text-[7.25rem]">
             <span className="block overflow-hidden pb-[0.06em]">
               <span data-hero-line className="block">Quality livestock.</span>

@@ -5,7 +5,6 @@ import { getCategorySync } from "@/lib/content";
 import { categoryHref } from "@/lib/routes";
 import { quickEnquiryUrl } from "@/lib/whatsapp";
 import { PageHeader } from "@/components/PageHeader";
-import { ContentFlag } from "@/components/ContentFlag";
 import { Faq } from "@/components/Faq";
 import { CTASection } from "@/components/CTASection";
 import { MobileCtaBar } from "@/components/MobileCtaBar";
@@ -36,14 +35,13 @@ export default async function StarterProductsPage() {
   return (
     <>
       <PageHeader
-        eyebrow="Beginner support"
         title={<>Starting <em>with livestock?</em></>}
         intro={<p>Practical support for first-time buyers: starter packages, set-up guidance and supporting products where available.</p>}
         crumbs={[{ name: "Starter products", path: "/starter-products" }]}
       />
 
       <div className="container-x">
-        <div className="overflow-hidden rounded-[1.5rem]" data-reveal="clip">
+        <div className="overflow-hidden rounded-sm" data-reveal="clip">
           <Media image={null} slot="sections/starter-products" alt="Starter support for new livestock owners" seed="starter-hero" tone="mist" sizes="100vw" priority className="aspect-[4/3] sm:aspect-[21/9]" caption="Starter support" />
         </div>
       </div>
@@ -54,22 +52,22 @@ export default async function StarterProductsPage() {
           <p className="mt-4 max-w-2xl text-lg text-muted">
             Ask about any of these when you enquire. Availability of supporting products varies.
           </p>
-          <ul className="mt-12 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
-            {products.map((p, i) => (
-              <li key={p.slug} id={p.slug} className="flex flex-col rounded-[1.25rem] border border-line bg-paper p-7" data-reveal>
-                <div className="flex items-start justify-between gap-3">
-                  <span className="font-mono text-xs text-clay">{String(i + 1).padStart(2, "0")}</span>
-                  {!p.confirmed && <ContentFlag />}
-                </div>
-                <h3 className="mt-10 font-serif text-3xl">{p.name}</h3>
-                <p className="mt-2 leading-relaxed text-muted">{p.description}</p>
-                <p className="mt-auto flex flex-wrap gap-1.5 pt-6">
-                  {p.relatesTo.map((slug) => {
+          <ul className="mt-12 grid gap-x-10 border-t border-line sm:grid-cols-2 lg:grid-cols-3">
+            {products.map((p) => (
+              <li key={p.slug} id={p.slug} className="border-b border-line py-6">
+                <h3 className="font-serif text-2xl">{p.name}</h3>
+                <p className="mt-1 leading-relaxed text-muted">{p.description}</p>
+                <p className="mt-2 text-sm text-muted">
+                  For{" "}
+                  {p.relatesTo.map((slug, i) => {
                     const c = getCategorySync(slug);
                     return (
-                      <Link key={slug} href={categoryHref(c)} className="rounded-full bg-bone px-3 py-1 text-xs font-medium hover:bg-sand">
-                        {c.name}
-                      </Link>
+                      <span key={slug}>
+                        {i > 0 && ", "}
+                        <Link href={categoryHref(c)} className="text-forest underline underline-offset-4">
+                          {c.name.toLowerCase()}
+                        </Link>
+                      </span>
                     );
                   })}
                 </p>

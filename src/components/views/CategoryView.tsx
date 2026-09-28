@@ -35,7 +35,6 @@ export function CategoryView({
           <Breadcrumbs items={[{ name: groupLabel, path: `/${category.group}` }, { name: category.name, path: categoryHref(category) }]} />
           <div className="mt-10 grid gap-10 lg:grid-cols-12 lg:items-end">
             <div className="lg:col-span-7">
-              <p className="eyebrow mb-4 text-clay">{groupLabel}</p>
               <h1 className="text-[3rem] leading-[0.95] font-light sm:text-7xl lg:text-[6.25rem]">{category.heading}</h1>
             </div>
             <div className="space-y-4 text-lg leading-relaxed text-muted lg:col-span-5 lg:pb-2">
@@ -57,7 +56,7 @@ export function CategoryView({
       </header>
 
       <div className="container-x mt-10">
-        <div className="overflow-hidden rounded-[1.5rem]" data-reveal="clip">
+        <div className="overflow-hidden rounded-sm" data-reveal="clip">
           <Media
             image={category.image}
             seed={`cat-${category.slug}`}
@@ -77,7 +76,7 @@ export function CategoryView({
               <Link
                 href={categoryHref(s)}
                 aria-current={s.slug === category.slug ? "page" : undefined}
-                className={`flex min-h-11 items-center rounded-full px-4 text-sm font-medium ${
+                className={`flex min-h-11 items-center rounded-sm px-4 text-sm font-medium ${
                   s.slug === category.slug ? "bg-forest text-bone" : "hover:bg-sand"
                 }`}
               >
@@ -93,13 +92,12 @@ export function CategoryView({
         <div className="container-x">
           <div className="flex flex-col justify-between gap-4 sm:flex-row sm:items-end">
             <div>
-              <p className="eyebrow mb-3 text-clay">Current stock</p>
               <h2 id="current-stock" className="text-4xl sm:text-5xl">
                 {category.name} listings
               </h2>
             </div>
             <p className="max-w-md text-muted">
-              Availability and prices are confirmed on enquiry — stock changes with each intake.
+              Availability and prices are confirmed on enquiry; stock changes with each intake. Photos are illustrative.
             </p>
           </div>
           <ul className="mt-12 grid gap-x-6 gap-y-14 sm:grid-cols-2 lg:grid-cols-3">
@@ -134,7 +132,7 @@ export function CategoryView({
               )}
             </dl>
 
-            <div className="mt-10 rounded-[1.25rem] bg-sand p-6">
+            <div className="mt-10 rounded-sm bg-sand p-6">
               <h3 className="font-serif text-2xl">Delivery note</h3>
               <p className="mt-2 leading-relaxed text-ink-soft">
                 {deliveryFacts.summary} {deliveryFacts.otherProvinces}
@@ -171,7 +169,7 @@ export function CategoryView({
               .filter((s) => s.slug !== category.slug)
               .map((s) => (
                 <li key={s.slug}>
-                  <Link href={categoryHref(s)} className="inline-flex min-h-12 items-center gap-2 rounded-full border border-line bg-paper px-5 font-serif text-lg hover:border-forest/40">
+                  <Link href={categoryHref(s)} className="inline-flex min-h-12 items-center gap-2 rounded-sm border border-line bg-paper px-5 font-serif text-lg hover:border-forest/40">
                     {s.name} <ArrowRight className="size-4 text-clay" />
                   </Link>
                 </li>

@@ -83,12 +83,12 @@ export function Navbar({
     <>
       <header
         className={`fixed inset-x-0 top-0 z-50 transition-[background-color,box-shadow,color] duration-300 ${
-          overlay ? "bg-transparent text-bone" : "bg-bone/95 text-ink shadow-[0_1px_0_var(--color-line)] backdrop-blur-md"
+          overlay ? "bg-transparent text-bone" : "bg-bone/95 text-ink border-b border-line backdrop-blur-md"
         }`}
       >
         <a
           href="#main"
-          className="sr-only focus:not-sr-only focus:absolute focus:top-3 focus:left-3 focus:z-50 focus:rounded-full focus:bg-forest focus:px-4 focus:py-2 focus:text-bone"
+          className="sr-only focus:not-sr-only focus:absolute focus:top-3 focus:left-3 focus:z-50 focus:rounded-sm focus:bg-forest focus:px-4 focus:py-2 focus:text-bone"
         >
           Skip to content
         </a>
@@ -103,7 +103,7 @@ export function Navbar({
                   <div className="flex items-center" onMouseEnter={() => setOpenGroup(g.label)}>
                     <Link
                       href={g.href}
-                      className={`rounded-full py-2 pr-1 pl-3.5 text-[0.93rem] font-medium ${isActive(g.href) ? "underline decoration-1 underline-offset-8" : ""}`}
+                      className={`rounded-sm py-2 pr-1 pl-3.5 text-[0.93rem] font-medium ${isActive(g.href) ? "underline decoration-1 underline-offset-8" : ""}`}
                     >
                       {g.label}
                     </Link>
@@ -116,7 +116,7 @@ export function Navbar({
                         e.stopPropagation();
                         setOpenGroup(open ? null : g.label);
                       }}
-                      className="grid size-8 place-items-center rounded-full"
+                      className="grid size-8 place-items-center rounded-sm"
                     >
                       <ChevronDown className={`size-4 transition-transform ${open ? "rotate-180" : ""}`} />
                     </button>
@@ -127,12 +127,12 @@ export function Navbar({
                       open ? "visible translate-y-0 opacity-100" : "invisible -translate-y-1 opacity-0"
                     }`}
                   >
-                    <ul className="w-[26rem] rounded-2xl border border-line bg-paper p-2 text-ink shadow-[0_20px_50px_-20px_rgba(29,28,25,0.35)]">
+                    <ul className="w-[26rem] rounded-sm border border-line bg-paper p-2 text-ink">
                       {g.items.map((it) => (
                         <li key={it.href}>
                           <Link
                             href={it.href}
-                            className="group flex items-start justify-between gap-4 rounded-xl px-4 py-3 hover:bg-bone"
+                            className="group flex items-start justify-between gap-4 rounded-sm px-4 py-3 hover:bg-bone"
                           >
                             <span>
                               <span className="block font-serif text-lg">{it.label}</span>
@@ -156,7 +156,7 @@ export function Navbar({
               <li key={l.href}>
                 <Link
                   href={l.href}
-                  className={`rounded-full px-3.5 py-2 text-[0.93rem] font-medium ${isActive(l.href) ? "underline decoration-1 underline-offset-8" : ""}`}
+                  className={`rounded-sm px-3.5 py-2 text-[0.93rem] font-medium ${isActive(l.href) ? "underline decoration-1 underline-offset-8" : ""}`}
                   aria-current={isActive(l.href) ? "page" : undefined}
                 >
                   {l.label}
@@ -175,7 +175,7 @@ export function Navbar({
             </Link>
             <button
               type="button"
-              className="grid size-11 place-items-center rounded-full lg:hidden"
+              className="grid size-11 place-items-center rounded-sm lg:hidden"
               aria-expanded={mobileOpen}
               aria-controls="mobile-menu"
               aria-label={mobileOpen ? "Close menu" : "Open menu"}
@@ -203,7 +203,7 @@ export function Navbar({
                     <li key={it.href}>
                       <Link
                         href={it.href}
-                        className="flex min-h-12 items-center rounded-xl bg-paper px-4 font-serif text-lg"
+                        className="flex min-h-12 items-center rounded-sm bg-paper px-4 font-serif text-lg"
                       >
                         {it.label}
                       </Link>

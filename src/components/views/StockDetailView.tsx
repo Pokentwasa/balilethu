@@ -53,7 +53,7 @@ export function StockDetailView({ item, category, related }: { item: StockItem; 
           <StockGallery
             images={item.images}
             fallback={
-              <Media image={null} seed={`stock-${item.slug}`} sizes="(min-width: 1024px) 58vw, 100vw" priority className="aspect-[4/3] rounded-[1.25rem]" caption={item.name} />
+              <Media image={null} seed={`stock-${item.slug}`} sizes="(min-width: 1024px) 58vw, 100vw" priority className="aspect-[4/3] rounded-sm" caption={item.name} />
             }
           />
         </div>
@@ -70,11 +70,10 @@ export function StockDetailView({ item, category, related }: { item: StockItem; 
 
           <section aria-labelledby="notes-heading" className="mt-14">
             <h2 id="notes-heading" className="text-3xl sm:text-4xl">Before you purchase</h2>
-            <ul className="mt-6 space-y-3">
-              {notes.map((n, i) => (
-                <li key={n} className="flex gap-4 border-b border-line pb-3 leading-relaxed">
-                  <span className="font-mono text-xs text-clay pt-1.5">{String(i + 1).padStart(2, "0")}</span>
-                  <span className="text-ink-soft">{n}</span>
+            <ul className="mt-6 border-t border-line">
+              {notes.map((n) => (
+                <li key={n} className="border-b border-line py-3 leading-relaxed text-ink-soft">
+                  {n}
                 </li>
               ))}
             </ul>
@@ -97,7 +96,7 @@ export function StockDetailView({ item, category, related }: { item: StockItem; 
             <h1 className="mt-5 text-[2.6rem] leading-[1.02] font-light sm:text-6xl">{item.name}</h1>
             <p className="mt-4 text-lg leading-relaxed text-muted">{item.shortDescription}</p>
 
-            <div className="mt-8 rounded-[1.25rem] border border-line bg-paper p-6">
+            <div className="mt-8 rounded-sm border border-line bg-paper p-6">
               <p className="text-sm text-muted">Price</p>
               <p className="mt-1 font-serif text-4xl">
                 {price.main}
@@ -119,7 +118,7 @@ export function StockDetailView({ item, category, related }: { item: StockItem; 
               </Link>
             </div>
 
-            <div className="mt-6 rounded-[1.25rem] bg-sand p-6">
+            <div className="mt-6 rounded-sm bg-sand p-6">
               <h2 className="font-serif text-xl">Delivery</h2>
               <p className="mt-2 text-sm leading-relaxed text-ink-soft">{item.deliveryNotes ?? deliveryFacts.summary}</p>
               <Link href="/delivery" className="mt-3 inline-flex items-center gap-1.5 text-sm font-semibold text-forest link-underline">

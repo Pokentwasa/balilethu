@@ -10,7 +10,7 @@ export function CategoryCard({ category, index, size = "default" }: { category: 
   return (
     <Link
       href={categoryHref(category)}
-      className="group relative block h-full overflow-hidden rounded-[1.25rem] bg-forest-deep text-bone"
+      className="group relative block h-full overflow-hidden rounded-sm bg-forest-deep text-bone"
       data-reveal
       style={{ ["--reveal-delay" as string]: `${(index % 4) * 70}ms` }}
     >
@@ -30,13 +30,6 @@ export function CategoryCard({ category, index, size = "default" }: { category: 
         captionClassName="top-14 left-5"
       />
       <div className="absolute inset-0 bg-gradient-to-t from-forest-deep/90 via-forest-deep/20 to-transparent" />
-      <div className="absolute inset-x-0 top-0 h-24 bg-gradient-to-b from-forest-deep/45 to-transparent" />
-      <div className="absolute inset-x-0 top-0 flex items-center justify-between p-5">
-        <span className="font-mono text-xs text-bone/85">{String(index + 1).padStart(2, "0")}</span>
-        <span className="rounded-full border border-bone/30 px-2.5 py-1 text-[0.62rem] font-semibold tracking-[0.18em] uppercase text-bone/80">
-          {category.group}
-        </span>
-      </div>
       <div className="absolute inset-x-0 bottom-0 p-5 sm:p-6">
         <h3 className={`font-serif leading-none ${tall ? "text-5xl sm:text-6xl" : "text-[2.1rem]"}`}>{category.name}</h3>
         <p className="mt-2 max-w-xs text-sm leading-snug text-bone/75">{category.tagline}</p>

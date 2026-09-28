@@ -43,9 +43,8 @@ export default async function HomePage() {
         <div className="container-x">
           <SectionHeading
             id="stock-heading"
-            eyebrow="Current stock"
             title="Available livestock"
-            intro="A selection of what Balilethu supplies. Prices and numbers change with each intake — every enquiry is confirmed against current stock."
+            intro="A selection of what Balilethu supplies. Prices and numbers change with each intake, so every enquiry is confirmed against current stock. Photos are illustrative."
             align="split"
           >
             <Link href="/livestock" className="mt-6 inline-flex items-center gap-2 font-semibold text-forest link-underline">

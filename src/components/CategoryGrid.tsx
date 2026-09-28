@@ -10,7 +10,6 @@ export function CategoryGrid({ categories }: { categories: Category[] }) {
       <div className="container-x">
         <SectionHeading
           id="categories-heading"
-          eyebrow="Browse by category"
           title={<>From calves and cattle to sheep, goats <em className="text-forest-soft">and poultry.</em></>}
           intro="Livestock for farmers, households and growing agricultural businesses. Choose a category to see current stock, pricing and what you need to know before buying."
           align="split"
@@ -28,7 +27,7 @@ export function CategoryGrid({ categories }: { categories: Category[] }) {
         </ul>
         <div className="container-x mt-4 flex flex-wrap gap-2">
           {categories.map((c) => (
-            <Link key={c.slug} href={`/${c.group}/${c.slug}`} className="rounded-full border border-line bg-paper px-4 py-2.5 text-sm font-medium">
+            <Link key={c.slug} href={`/${c.group}/${c.slug}`} className="rounded-sm border border-line bg-paper px-4 py-2.5 text-sm font-medium">
               {c.name}
             </Link>
           ))}

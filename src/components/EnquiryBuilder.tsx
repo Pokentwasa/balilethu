@@ -81,12 +81,12 @@ export function EnquiryBuilder({
       className={`grid gap-8 lg:grid-cols-12 ${dark ? "text-bone" : ""}`}
       aria-describedby={fieldId("help")}
     >
-      <div className={`rounded-[1.5rem] p-5 sm:p-8 lg:col-span-7 ${dark ? "bg-bone text-ink" : "border border-line bg-paper"}`}>
+      <div className={`rounded-sm p-5 sm:p-8 lg:col-span-7 ${dark ? "bg-bone text-ink" : "border border-line bg-paper"}`}>
         <p id={fieldId("help")} className="sr-only">
           Fill in the details below. Continue on WhatsApp opens a pre-filled message you can review before sending.
         </p>
 
-        <Step n="01" title="What are you looking for?">
+        <Step title="What are you looking for?">
           <div className="grid gap-4 sm:grid-cols-2">
             <div>
               <label htmlFor={fieldId("cat")} className="label">
@@ -161,7 +161,7 @@ export function EnquiryBuilder({
           </div>
         </Step>
 
-        <Step n="02" title="Where are you?">
+        <Step title="Where are you?">
           <div className="grid gap-4 sm:grid-cols-2">
             <div>
               <label htmlFor={fieldId("prov")} className="label">
@@ -194,7 +194,7 @@ export function EnquiryBuilder({
               {(["Delivery", "Collection"] as const).map((f) => (
                 <label
                   key={f}
-                  className={`flex min-h-12 cursor-pointer items-center justify-center gap-2 rounded-xl border px-4 text-sm font-semibold transition-colors has-[:focus-visible]:outline-2 has-[:focus-visible]:outline-clay ${
+                  className={`flex min-h-12 cursor-pointer items-center justify-center gap-2 rounded-sm border px-4 text-sm font-semibold transition-colors has-[:focus-visible]:outline-2 has-[:focus-visible]:outline-clay ${
                     fulfilment === f ? "border-forest bg-forest text-bone" : "border-line bg-bone hover:border-forest/40"
                   }`}
                 >
@@ -210,7 +210,7 @@ export function EnquiryBuilder({
                 </label>
               ))}
             </div>
-            <p className={`mt-3 text-sm leading-relaxed ${outsideDelivery ? "rounded-lg bg-clay/10 p-3 text-clay" : "text-muted"}`} role={outsideDelivery ? "status" : undefined}>
+            <p className={`mt-3 text-sm leading-relaxed ${outsideDelivery ? "rounded-sm bg-clay/10 p-3 text-clay" : "text-muted"}`} role={outsideDelivery ? "status" : undefined}>
               {outsideDelivery
                 ? `Delivery covers KwaZulu-Natal and the Eastern Cape (up to Mount Frere). From ${province}, you'll need to arrange your own transport to collect.`
                 : "Delivery: KwaZulu-Natal and Eastern Cape (up to Mount Frere). Other provinces: own transport for collection."}
@@ -218,7 +218,7 @@ export function EnquiryBuilder({
           </fieldset>
         </Step>
 
-        <Step n="03" title="Anything else?" last>
+        <Step title="Anything else?" last>
           <div className="grid gap-4 sm:grid-cols-2">
             <div className="sm:col-span-2">
               <label htmlFor={fieldId("msg")} className="label">
@@ -252,8 +252,8 @@ export function EnquiryBuilder({
       <div className="lg:col-span-5">
         <div className="lg:sticky lg:top-28">
           <p className={`eyebrow mb-3 ${dark ? "text-sand-deep" : "text-muted"}`}>Your WhatsApp message</p>
-          <div className="relative rounded-[1.5rem] bg-[#e7dfcd] p-4 sm:p-5">
-            <div className="ml-auto max-w-[95%] rounded-2xl rounded-tr-sm bg-[#dcf2c8] p-4 text-[0.92rem] leading-relaxed whitespace-pre-wrap text-ink shadow-sm">
+          <div className="relative rounded-sm bg-sand p-4 sm:p-5">
+            <div className="ml-auto max-w-[95%] rounded-sm bg-bone p-4 text-[0.92rem] leading-relaxed whitespace-pre-wrap text-ink">
               <output htmlFor={`${fieldId("cat")} ${fieldId("qty")}`} aria-live="polite" className="block">
                 {text}
               </output>
@@ -277,12 +277,11 @@ export function EnquiryBuilder({
   );
 }
 
-function Step({ n, title, children, last = false }: { n: string; title: string; children: React.ReactNode; last?: boolean }) {
+function Step({ title, children, last = false }: { title: string; children: React.ReactNode; last?: boolean }) {
   return (
     <fieldset className={last ? "" : "mb-8 border-b border-line pb-8"}>
-      <legend className="mb-5 flex items-baseline gap-3">
-        <span className="font-mono text-xs text-clay">{n}</span>
-        <span className="font-serif text-2xl">{title}</span>
+      <legend className="mb-5 font-serif text-2xl">
+        {title}
       </legend>
       {children}
     </fieldset>

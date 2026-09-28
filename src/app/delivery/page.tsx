@@ -30,7 +30,6 @@ export default function DeliveryPage() {
   return (
     <>
       <PageHeader
-        eyebrow="Delivery & collection"
         title={<>How your livestock <em>gets to you</em></>}
         intro={<p>{deliveryFacts.summary} Collection for everyone else.</p>}
         crumbs={[{ name: "Delivery", path: "/delivery" }]}

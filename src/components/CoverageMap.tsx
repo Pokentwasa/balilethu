@@ -28,7 +28,7 @@ export function CoverageMap({ deliveryProvinces }: { deliveryProvinces: readonly
                 gridColumn: `${t.col} / span ${t.colSpan ?? 1}`,
                 gridRow: `${t.row} / span ${t.rowSpan ?? 1}`,
               }}
-              className={`relative flex min-h-[4.5rem] flex-col justify-between rounded-xl p-2.5 sm:min-h-24 sm:p-3.5 ${
+              className={`relative flex min-h-[4.5rem] flex-col justify-between rounded-sm p-2.5 sm:min-h-24 sm:p-3.5 ${
                 delivery ? "bg-forest text-bone" : "border border-ink/20 bg-transparent text-ink/70"
               }`}
             >

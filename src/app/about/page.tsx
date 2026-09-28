@@ -29,7 +29,6 @@ export default async function AboutPage() {
   return (
     <>
       <PageHeader
-        eyebrow="About"
         title={<>A livestock supplier <em>you deal with directly.</em></>}
         intro={
           <p>
@@ -41,7 +40,7 @@ export default async function AboutPage() {
       />
 
       <div className="container-x">
-        <div className="overflow-hidden rounded-[1.5rem]" data-reveal="clip">
+        <div className="overflow-hidden rounded-sm" data-reveal="clip">
           <Media image={null} slot="sections/about" alt="Balilethu Livestock" seed="about-hero" tone="dry" sizes="100vw" priority className="aspect-[4/3] sm:aspect-[21/9]" caption="Balilethu team / farm" />
         </div>
       </div>
@@ -67,7 +66,7 @@ export default async function AboutPage() {
             <ul className="flex flex-wrap gap-2">
               {categories.map((c) => (
                 <li key={c.slug}>
-                  <Link href={categoryHref(c)} className="inline-flex min-h-12 items-center rounded-full border border-line bg-bone px-5 font-serif text-xl hover:border-forest/40">
+                  <Link href={categoryHref(c)} className="inline-flex min-h-12 items-center rounded-sm border border-line bg-bone px-5 font-serif text-xl hover:border-forest/40">
                     {c.name}
                   </Link>
                 </li>

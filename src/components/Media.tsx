@@ -56,7 +56,7 @@ export function Media({
             <Artwork seed={seed} tone={tone} />
           </div>
           {site.showContentFlags && caption && (
-            <span className={`absolute z-10 ${captionClassName} rounded-full bg-ink/55 px-2.5 py-1 text-[0.62rem] font-medium tracking-wide text-bone/90 uppercase backdrop-blur-sm`}>
+            <span className={`absolute z-10 ${captionClassName} rounded-sm bg-ink/55 px-2.5 py-1 text-[0.62rem] font-medium tracking-wide text-bone/90 uppercase backdrop-blur-sm`}>
               Photo: {caption}
             </span>
           )}
@@ -69,7 +69,7 @@ export function Media({
 /** Tells buyers a listing photo is representative, not the animal for sale. */
 export function IllustrativeTag({ className = "bottom-3 left-3" }: { className?: string }) {
   return (
-    <span className={`absolute z-10 ${className} rounded-full bg-ink/55 px-2.5 py-1 text-[0.62rem] font-medium tracking-wide text-bone/90 uppercase backdrop-blur-sm`}>
+    <span className={`absolute z-10 ${className} rounded-sm bg-ink/55 px-2.5 py-1 text-[0.62rem] font-medium tracking-wide text-bone/90 uppercase backdrop-blur-sm`}>
       Illustrative photo
     </span>
   );
