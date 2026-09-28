@@ -8,6 +8,7 @@ const palettes = {
   dawn: { sky: ["#efe4cc", "#dcbf98"], sun: "#f3e6c9", hills: ["#b3a07a", "#8a8660", "#56633f", "#2b4331", "#172b1f"] },
   dusk: { sky: ["#e8d2b4", "#c48a63"], sun: "#f1dcbf", hills: ["#a68365", "#7d6a50", "#55563b", "#304232", "#1a2a1f"] },
   mist: { sky: ["#e6e4d6", "#cbc8b0"], sun: "#f2f0e4", hills: ["#adb095", "#8c9272", "#627052", "#3a5140", "#1d3226"] },
+  earth: { sky: ["#e9d3bf", "#b98267"], sun: "#f3e1cd", hills: ["#a8796a", "#855545", "#6e4538", "#56342a", "#3b231c"] },
   dry: { sky: ["#f1e6cc", "#e1c893"], sun: "#f7edd6", hills: ["#c2a874", "#a18a5c", "#76704a", "#46533a", "#233628"] },
 } as const;
 

@@ -13,11 +13,11 @@ export function CTASection({
   subject?: string;
 }) {
   return (
-    <section aria-labelledby="final-cta" className="relative isolate overflow-hidden bg-forest-deep text-bone">
+    <section aria-labelledby="final-cta" className="relative isolate overflow-hidden bg-earth-deep text-bone">
       <div className="absolute inset-0 -z-10 opacity-35">
-        <Artwork seed="final-cta" tone="dusk" />
+        <Artwork seed="final-cta" tone="earth" />
       </div>
-      <div className="absolute inset-0 -z-10 bg-gradient-to-t from-forest-deep via-forest-deep/80 to-forest-deep/40" />
+      <div className="absolute inset-0 -z-10 bg-gradient-to-t from-earth-deep via-earth-deep/80 to-earth/40" />
       <div className="container-x py-24 md:py-36">
         <div className="max-w-3xl" data-reveal>
           <h2 id="final-cta" className="text-5xl leading-[0.98] sm:text-6xl lg:text-[5.5rem]">

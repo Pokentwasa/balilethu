@@ -57,6 +57,10 @@ images: [{ src: "/images/calves/hereford-1.jpg", alt: "Hereford-cross heifers in
 
 Until then, `Media` renders placeholder landscape artwork, which is pure SVG and costs no network requests. For the hero, pass an image to `<Hero image={…} />` in `src/app/page.tsx`.
 
+## Colour palette
+
+Tokens live in `src/app/globals.css` (`@theme`): forest (`#1f3a2c`), earth (`#855545`, plus `earth-deep` / `earth-soft`), clay accent, sand, bone and charcoal ink. Forest and earth are the two dark surfaces. Earth is used for the "How buying works" band and the closing CTA.
+
 ## Components
 
 `Navbar` (dropdowns, mobile sheet), `Hero` + `HeroMotion`, `CategoryGrid`/`CategoryCard`, `StockCard`, `AvailabilityBadge`, `StockCatalogue` (filters), `EnquiryBuilder` + `EnquirySection`, `ProcessSteps`, `WhyBalilethu`, `BeginnerSupport`, `DeliverySection` + `CoverageMap`, `Testimonials`, `CTASection`, `Faq`, `Breadcrumbs`, `MobileCtaBar`, `ContactForm`, `StockGallery`, `Footer`. Page layouts live in `src/components/views/`.
