@@ -7,7 +7,7 @@ import { ArrowRight, WhatsAppIcon } from "./Icons";
 
 export function Hero({ image }: { image: StockImage | null }) {
   return (
-    <section id="hero" aria-labelledby="hero-heading" className="relative isolate flex min-h-[100svh] items-end overflow-hidden bg-forest-deep text-bone">
+    <section id="hero" aria-labelledby="hero-heading" className="relative isolate flex min-h-[100svh] items-end overflow-hidden bg-ink text-bone">
       <div data-hero-parallax className="absolute inset-0 -z-20 will-change-transform">
         <div data-hero-media className="absolute inset-0 will-change-transform">
           <Media
@@ -25,9 +25,8 @@ export function Hero({ image }: { image: StockImage | null }) {
           />
         </div>
       </div>
-      {/* Readability overlay */}
-      <div className="absolute inset-0 -z-10 bg-gradient-to-t from-forest-deep via-forest-deep/55 to-forest-deep/10" />
-      <div className="absolute inset-x-0 top-0 -z-10 h-40 bg-gradient-to-b from-forest-deep/50 to-transparent" />
+      {/* Flat charcoal tint for readability — no gradient. */}
+      <div className="absolute inset-0 -z-10 bg-ink/45" />
 
       <div className="container-x pt-32 pb-14 md:pb-20">
         <div className="max-w-5xl">
@@ -42,25 +41,22 @@ export function Hero({ image }: { image: StockImage | null }) {
           <p data-hero-fade className="mt-7 max-w-xl text-lg leading-relaxed text-bone/85 sm:text-xl">
             Browse calves, cattle, sheep, goats and poultry available from Balilethu Livestock.
           </p>
-          <div data-hero-fade className="mt-9 flex flex-col gap-3 sm:flex-row">
-            <Link href="/livestock" className="btn btn-light group">
-              View Livestock
-              <ArrowRight className="size-4 transition-transform group-hover:translate-x-0.5" />
+          <div data-hero-fade className="mt-9 flex flex-wrap items-center gap-x-8 gap-y-3">
+            <Link href="/livestock" className="btn btn-light">
+              View livestock
             </Link>
-            <a href={quickEnquiryUrl()} target="_blank" rel="noopener noreferrer" className="btn btn-outline text-bone">
+            <a href={quickEnquiryUrl()} target="_blank" rel="noopener noreferrer" className="group inline-flex min-h-11 items-center gap-2 font-semibold text-bone">
               <WhatsAppIcon className="size-5" />
               Enquire on WhatsApp
+              <ArrowRight className="size-4 transition-transform group-hover:translate-x-0.5" />
             </a>
           </div>
         </div>
         <p
           data-hero-fade
-          className="mt-14 flex flex-wrap gap-x-8 gap-y-1 border-t border-bone/20 pt-5 text-xs font-medium tracking-[0.2em] text-bone/70 uppercase"
+          className="mt-14 border-t border-bone/25 pt-5 text-[0.95rem] text-bone/85"
         >
-          <span>Livestock</span>
-          <span>Poultry</span>
-          <span>Delivery</span>
-          <span>Farmer support</span>
+          Livestock &middot; Poultry &middot; Delivery in KZN and the Eastern Cape &middot; Support for first-time buyers
         </p>
       </div>
       <HeroMotion scope="#hero" />
