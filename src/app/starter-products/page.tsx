@@ -44,7 +44,7 @@ export default async function StarterProductsPage() {
 
       <div className="container-x">
         <div className="overflow-hidden rounded-[1.5rem]" data-reveal="clip">
-          <Media image={null} seed="starter-hero" tone="mist" sizes="100vw" priority className="aspect-[4/3] sm:aspect-[21/9]" caption="Starter support" />
+          <Media image={null} slot="sections/starter-products" alt="Starter support for new livestock owners" seed="starter-hero" tone="mist" sizes="100vw" priority className="aspect-[4/3] sm:aspect-[21/9]" caption="Starter support" />
         </div>
       </div>
 

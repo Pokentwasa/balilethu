@@ -2,6 +2,7 @@ import Image from "next/image";
 import type { StockImage } from "@/lib/types";
 import { Artwork, type ArtworkTone } from "./Artwork";
 import { site } from "@/config/site";
+import { findImage } from "@/lib/images";
 
 /**
  * Image slot: renders the supplied photograph, or placeholder artwork with a
@@ -17,6 +18,8 @@ export function Media({
   imgClassName = "",
   caption,
   captionClassName = "bottom-3 left-3",
+  slot,
+  alt,
 }: {
   image: StockImage | null | undefined;
   seed: string;
@@ -27,7 +30,11 @@ export function Media({
   imgClassName?: string;
   caption?: string;
   captionClassName?: string;
+  /** When `image` is empty, looks for public/images/<slot>.(jpg|png|webp|avif). */
+  slot?: string;
+  alt?: string;
 }) {
+  if (!image && slot) image = findImage(slot, alt ?? caption ?? "");
   const position = /(^|\s)absolute(\s|$)/.test(className) ? "" : "relative";
   return (
     <div className={`${position} overflow-hidden bg-sand ${className}`}>

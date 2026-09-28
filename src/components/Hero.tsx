@@ -12,6 +12,8 @@ export function Hero({ image }: { image: StockImage | null }) {
         <div data-hero-media className="absolute inset-0 will-change-transform">
           <Media
             image={image}
+            slot="hero/hero"
+            alt="Cattle on a farm — Balilethu Livestock"
             seed="hero-farm"
             tone="dawn"
             sizes="100vw"

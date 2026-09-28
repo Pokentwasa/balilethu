@@ -42,7 +42,7 @@ export default async function AboutPage() {
 
       <div className="container-x">
         <div className="overflow-hidden rounded-[1.5rem]" data-reveal="clip">
-          <Media image={null} seed="about-hero" tone="dry" sizes="100vw" priority className="aspect-[4/3] sm:aspect-[21/9]" caption="Balilethu team / farm" />
+          <Media image={null} slot="sections/about" alt="Balilethu Livestock" seed="about-hero" tone="dry" sizes="100vw" priority className="aspect-[4/3] sm:aspect-[21/9]" caption="Balilethu team / farm" />
         </div>
       </div>
 

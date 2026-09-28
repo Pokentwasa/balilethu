@@ -12,10 +12,10 @@ import { ContentFlag } from "./ContentFlag";
 export function Testimonials({ testimonials }: { testimonials: Testimonial[] }) {
   const showPlaceholders = testimonials.length === 0 && site.showContentFlags;
   const gallery = [
-    { seed: "gallery-delivery", caption: "Delivery day", cls: "col-span-2 row-span-2" },
-    { seed: "gallery-calves", caption: "Calves ready to load", cls: "" },
-    { seed: "gallery-poultry", caption: "Poultry collection", cls: "" },
-    { seed: "gallery-farm", caption: "On the farm", cls: "col-span-2" },
+    { seed: "gallery-delivery", slot: "gallery/delivery-day", caption: "Delivery day", cls: "col-span-2 row-span-2" },
+    { seed: "gallery-calves", slot: "gallery/calves-loading", caption: "Calves ready to load", cls: "" },
+    { seed: "gallery-poultry", slot: "gallery/poultry-collection", caption: "Poultry collection", cls: "" },
+    { seed: "gallery-farm", slot: "gallery/on-the-farm", caption: "On the farm", cls: "col-span-2" },
   ];
 
   return (
@@ -32,7 +32,7 @@ export function Testimonials({ testimonials }: { testimonials: Testimonial[] }) 
         <div className="mt-12 grid auto-rows-[9rem] grid-cols-2 gap-3 sm:auto-rows-[12rem] md:grid-cols-4 md:auto-rows-[14rem]">
           {gallery.map((g) => (
             <div key={g.seed} className={`overflow-hidden rounded-[1.1rem] ${g.cls}`} data-reveal="clip">
-              <Media image={null} seed={g.seed} sizes="(min-width: 768px) 50vw, 100vw" className="h-full" caption={g.caption} />
+              <Media image={null} slot={g.slot} seed={g.seed} sizes="(min-width: 768px) 50vw, 100vw" className="h-full" caption={g.caption} />
             </div>
           ))}
         </div>

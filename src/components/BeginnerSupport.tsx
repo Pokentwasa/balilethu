@@ -19,7 +19,7 @@ export function BeginnerSupport({ products, showCta = true }: { products: Starte
               can help you get set up with supporting products and practical guidance — ask when you enquire.
             </p>
             <div className="mt-8 overflow-hidden rounded-[1.25rem]" data-reveal="clip">
-              <Media image={null} seed="beginner-calves" tone="mist" sizes="(min-width: 1024px) 35vw, 100vw" className="aspect-[16/11]" caption="Bottle-feeding calves" />
+              <Media image={null} slot="sections/beginner" alt="Bottle-feeding a young calf" seed="beginner-calves" tone="mist" sizes="(min-width: 1024px) 35vw, 100vw" className="aspect-[16/11]" caption="Bottle-feeding calves" />
             </div>
             {showCta && (
               <div className="mt-8 flex flex-col gap-3 sm:flex-row">
