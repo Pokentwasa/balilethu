@@ -10,7 +10,6 @@ export const photoAlts: Record<string, string> = {
   "categories/goats": "Herd of goats behind a wire fence",
   "categories/layers": "Brown laying hens in a farmyard",
   "categories/day-old-chicks": "Day-old chicks under a heat lamp",
-  "stock/holstein-cross-bull-calves/1": "Black-and-white cow with calves in a field at sunset",
   "stock/nguni-pregnant-cows/1": "Red horned cow standing in a green field",
   "stock/breeding-sheep/1": "Flock of sheep resting on grass",
   "stock/breeding-sheep/2": "Close-up of a woolly sheep",

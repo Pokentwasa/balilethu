@@ -11,10 +11,10 @@ export function StockGallery({ images, fallback }: { images: StockImage[]; fallb
   const current = images[active];
   return (
     <div>
-      <div className="relative aspect-[4/3] overflow-hidden rounded-[1.25rem] bg-sand">
+      <div className="relative aspect-[4/3] overflow-hidden bg-sand">
         <Image src={current.src} alt={current.alt} fill priority sizes="(min-width: 1024px) 58vw, 100vw" className="object-cover" />
         {current.illustrative && (
-          <span className="absolute bottom-3 left-3 z-10 rounded-full bg-ink/55 px-2.5 py-1 text-[0.62rem] font-medium tracking-wide text-bone/90 uppercase backdrop-blur-sm">
+          <span className="absolute bottom-3 left-3 z-10 bg-ink/60 px-2 py-1 text-[0.64rem] font-medium tracking-[0.06em] text-bone/90 uppercase">
             Illustrative photo
           </span>
         )}
@@ -28,7 +28,7 @@ export function StockGallery({ images, fallback }: { images: StockImage[]; fallb
                 onClick={() => setActive(i)}
                 aria-label={`Show image ${i + 1}: ${img.alt}`}
                 aria-current={i === active}
-                className={`relative block aspect-square w-full overflow-hidden rounded-lg ring-offset-2 ring-offset-bone ${i === active ? "ring-2 ring-forest" : "opacity-75 hover:opacity-100"}`}
+                className={`relative block aspect-square w-full overflow-hidden ring-offset-2 ring-offset-bone ${i === active ? "ring-2 ring-forest" : "opacity-75 hover:opacity-100"}`}
               >
                 <Image src={img.src} alt="" fill sizes="120px" className="object-cover" />
               </button>

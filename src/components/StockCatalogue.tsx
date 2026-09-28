@@ -55,7 +55,7 @@ export function StockCatalogue({
   const filters = (
     <div className="space-y-8">
       <fieldset>
-        <legend className="eyebrow mb-3 text-muted">Livestock & poultry</legend>
+        <legend className="mb-3 text-sm text-muted">Livestock & poultry</legend>
         <div className="flex flex-wrap gap-2">
           {categories.map((c) => (
             <Chip key={c.slug} active={cats.has(c.slug)} onClick={() => toggle(cats, c.slug, setCats)}>
@@ -65,7 +65,7 @@ export function StockCatalogue({
         </div>
       </fieldset>
       <fieldset>
-        <legend className="eyebrow mb-3 text-muted">Availability</legend>
+        <legend className="mb-3 text-sm text-muted">Availability</legend>
         <div className="flex flex-wrap gap-2">
           {availOptions.map((a) => (
             <Chip key={a} active={avail.has(a)} onClick={() => toggle(avail, a, setAvail)}>
@@ -105,7 +105,7 @@ export function StockCatalogue({
           </button>
         </div>
 
-        <ul className="grid gap-x-6 gap-y-14 sm:grid-cols-2 xl:grid-cols-3">
+        <ul className="grid gap-x-8 gap-y-16 sm:grid-cols-2 xl:grid-cols-3">
           {children.map((child, i) => (
             <li key={items[i].slug} hidden={!visible[i]}>
               {child}
@@ -113,7 +113,7 @@ export function StockCatalogue({
           ))}
         </ul>
         {count === 0 && (
-          <div className="rounded-2xl border border-dashed border-line p-10 text-center">
+          <div className="border-y border-line py-12">
             <p className="font-serif text-2xl">No listings match those filters.</p>
             <button type="button" onClick={reset} className="mt-4 text-sm font-semibold text-clay link-underline">
               Clear filters
@@ -125,10 +125,10 @@ export function StockCatalogue({
       {drawer && (
         <div className="fixed inset-0 z-[60] lg:hidden" role="dialog" aria-modal="true" aria-label="Filter stock">
           <button type="button" aria-label="Close filters" className="absolute inset-0 bg-ink/40" onClick={() => setDrawer(false)} />
-          <div className="absolute inset-x-0 bottom-0 max-h-[85svh] animate-drawer-in overflow-y-auto rounded-t-3xl bg-bone px-5 pt-5 pb-[max(1.25rem,env(safe-area-inset-bottom))] motion-reduce:animate-none">
+          <div className="absolute inset-x-0 bottom-0 max-h-[85svh] animate-drawer-in overflow-y-auto bg-bone px-5 pt-5 pb-[max(1.25rem,env(safe-area-inset-bottom))] motion-reduce:animate-none">
             <div className="mb-6 flex items-center justify-between">
               <p className="font-serif text-2xl">Filter stock</p>
-              <button type="button" onClick={() => setDrawer(false)} className="grid size-11 place-items-center rounded-full" aria-label="Close filters">
+              <button type="button" onClick={() => setDrawer(false)} className="grid size-11 place-items-center" aria-label="Close filters">
                 <Close className="size-5" />
               </button>
             </div>
@@ -154,8 +154,8 @@ function Chip({ active, onClick, children }: { active: boolean; onClick: () => v
       type="button"
       aria-pressed={active}
       onClick={onClick}
-      className={`min-h-11 rounded-full border px-4 text-sm font-medium transition-colors ${
-        active ? "border-forest bg-forest text-bone" : "border-line bg-paper text-ink hover:border-forest/50"
+      className={`min-h-10 border px-3.5 text-sm transition-colors ${
+        active ? "border-forest bg-forest text-bone" : "border-line text-ink hover:border-ink"
       }`}
     >
       {children}

@@ -13,7 +13,6 @@ export default async function PoultryPage() {
   const [poultry, items] = await Promise.all([getCategories("poultry"), getStock({ group: "poultry" })]);
   return (
     <GroupView
-      group="poultry"
       title={<>Poultry <em>for sale</em></>}
       intro="Layers, broilers and day-old chicks for households and growing poultry businesses."
       crumbs={[{ name: "Poultry", path: "/poultry" }]}

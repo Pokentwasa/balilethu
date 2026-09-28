@@ -43,6 +43,8 @@ export interface Category {
   singular: string;
   /** One-line supporting copy for category cards. */
   tagline: string;
+  /** Very short descriptor for the category index, e.g. "Beef-cross & dairy-cross". */
+  indexLine: string;
   /** H1 on the category page. */
   heading: string;
   /** Intro paragraph(s) on the category page. */

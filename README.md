@@ -49,15 +49,17 @@ The content model lives in `src/lib/types.ts` (`Category`, `StockItem`, `Starter
 
 Pages read content only through the async functions in `src/lib/content.ts`. To connect a headless CMS (Sanity, Payload, Contentful…), change those functions to query the CMS and return the same types. No page code needs to change. Use ISR or on-demand revalidation so stock updates publish without a redeploy.
 
-**Adding photos:** drop files into `public/images/` using the names in [`docs/IMAGES.md`](./docs/IMAGES.md). For example, `categories/calves.jpg` or `stock/hereford-cross-calves/1.jpg`. They're picked up automatically at build time (`src/lib/images.ts`), so no code changes are needed. Photos set explicitly in the data (or later from a CMS) take priority. Until a photo exists, `Media` shows placeholder artwork.
+**Adding photos:** drop files into `public/images/` using the names in [`docs/IMAGES.md`](./docs/IMAGES.md). For example, `categories/calves.jpg` or `stock/hereford-cross-calves/1.jpg`. They're picked up automatically at build time (`src/lib/images.ts`), so no code changes are needed. Photos set explicitly in the data (or later from a CMS) take priority. Until a photo exists, `Media` shows a plain catalogue plate ("Photo to follow"). Listings never borrow another listing's or the category's photo.
 
 ## Colour palette
 
-Tokens live in `src/app/globals.css` (`@theme`): forest (`#1f3a2c`), earth (`#855545`, plus `earth-deep` / `earth-soft`), clay accent, sand, bone and charcoal ink. Forest and earth are the two dark surfaces. Earth is used for the "How buying works" band and the closing CTA.
+Tokens live in `src/app/globals.css` (`@theme`): warm off-white background (bone), charcoal ink, forest green (`#1f3a2c`) as the brand anchor, and earth brown (`#855545`) as the accent. Green is used for primary buttons and the WhatsApp section; earth for the homepage brand-story panel and small accents. The footer is charcoal.
+
+Type: Newsreader (editorial serif, headings) and Archivo (grotesk, body). Corners are square (buttons 2px). Structure comes from rules, spacing and type rather than bordered cards.
 
 ## Components
 
-`Navbar` (dropdowns, mobile sheet), `Hero` + `HeroMotion`, `CategoryGrid`/`CategoryCard`, `StockCard`, `AvailabilityBadge`, `StockCatalogue` (filters), `EnquiryBuilder` + `EnquirySection`, `ProcessSteps`, `WhyBalilethu`, `BeginnerSupport`, `DeliverySection` + `CoverageMap`, `Testimonials`, `CTASection`, `Faq`, `Breadcrumbs`, `MobileCtaBar`, `ContactForm`, `StockGallery`, `Footer`. Page layouts live in `src/components/views/`.
+`Navbar`, `Hero` + `HeroMotion`, `CategoryIndex` + `CategoryIndexBlock` (editorial category directory), `StockCard` (catalogue entry), `AvailabilityBadge`, `StockCatalogue` (filters), `BrandStory`, `RecentDeliveries` (renders only with real photos in `public/images/deliveries/`), `BuyingDelivery` + `BuyingSteps`, `EnquiryBuilder` + `EnquirySection`, `CTASection`, `Faq`, `Breadcrumbs`, `MobileCtaBar`, `ContactForm`, `StockGallery`, `Media` + `Plate`, `Footer`. Page layouts live in `src/components/views/`.
 
 ## WhatsApp enquiries
 
@@ -72,8 +74,8 @@ Tokens live in `src/app/globals.css` (`@theme`): forest (`#1f3a2c`), earth (`#85
 
 ## Performance and accessibility
 
-- Fonts come from `next/font` (Fraunces and Inter, self-hosted, `swap`).
+- Fonts come from `next/font` (Newsreader and Archivo, self-hosted, `swap`).
 - Photos go through `next/image` (AVIF/WebP, responsive `sizes`, priority on the LCP image).
-- GSAP is dynamically imported after first paint and used only for the hero. Scroll reveals use IntersectionObserver with CSS transforms.
+- GSAP is dynamically imported after first paint and used only for the hero (headline reveal, slow image settle, light parallax). Headings and images reveal once on scroll via IntersectionObserver; nothing else animates.
 - Content stays visible without JavaScript. Reveals opt in only once JS runs, and all motion respects `prefers-reduced-motion`.
 - Semantic landmarks and a skip link; keyboard-operable menus (Escape closes them), visible focus rings, labelled form fields with inline errors, `aria-pressed` filter chips, and a modal filter drawer.

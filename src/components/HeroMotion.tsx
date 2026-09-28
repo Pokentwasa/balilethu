@@ -30,9 +30,9 @@ export function HeroMotion({ scope }: { scope: string }) {
           { opacity: 0, y: 16 },
           { opacity: 1, y: 0, duration: 0.9, ease: "power3.out", stagger: 0.08, delay: 0.45 },
         );
-        gsap.fromTo("[data-hero-media]", { scale: 1.08 }, { scale: 1, duration: 2.2, ease: "power2.out" });
+        gsap.fromTo("[data-hero-media]", { scale: 1.05 }, { scale: 1, duration: 2.4, ease: "power2.out" });
         gsap.to("[data-hero-parallax]", {
-          yPercent: 14,
+          yPercent: 6,
           ease: "none",
           scrollTrigger: { trigger: root, start: "top top", end: "bottom top", scrub: true },
         });

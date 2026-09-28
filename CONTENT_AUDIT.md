@@ -50,14 +50,15 @@ so don't reuse these figures without a current list from the client.
 - **Starter products:** milk replacer, bottles & feeders, care products, guides and
   video support were requested in the brief but aren't confirmed as products.
   Starter *packages* are confirmed (calf packages). Edit `src/data/support.ts`.
-- **Testimonials:** none supplied. Add real ones to `testimonials` in
-  `src/data/support.ts`. Placeholders show only while content flags are on.
+- **Testimonials:** none supplied, so the site shows none, not even placeholders. Real ones can
+  be stored in `testimonials` in `src/data/support.ts` once a display component is added.
 - **Photography:** the site currently uses Unsplash stock photos, not Balilethu's
   own animals. Listing photos are labelled "Illustrative photo"; turn that off with
   `stockPhotosAreIllustrative` in `src/data/photos.ts` once real listing photos are in.
   Still missing: a broilers photo (white meat birds) and real delivery/customer photos
-  for the "Livestock on its way" gallery. Those slots show placeholder artwork.
-- **Phone line, email, business hours:** not confirmed, so they're hidden or shown as "Use WhatsApp".
+  (`public/images/deliveries/`). Until then the "Recent deliveries" section is hidden, and
+  listings without their own photo show a "Photo to follow" plate.
+- **Phone line, email, business hours:** not confirmed, so they're hidden.
 - **Availability:** every listing is "Enquire" until a live stock count exists.
 
 ## Deliberately not used

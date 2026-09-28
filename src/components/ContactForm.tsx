@@ -52,7 +52,7 @@ export function ContactForm({ interests, businessName }: { interests: string[]; 
   const a11y = (k: string) => ({ "aria-invalid": !!errors[k], "aria-describedby": errors[k] ? id(`${k}-err`) : undefined });
 
   return (
-    <form onSubmit={onSubmit} noValidate className="grid gap-5 sm:grid-cols-2">
+    <form onSubmit={onSubmit} noValidate className="grid gap-x-8 gap-y-8 sm:grid-cols-2">
       <div>
         <label htmlFor={id("name")} className="label">Name <span className="text-clay" aria-hidden="true">*</span></label>
         <input id={id("name")} className="field" autoComplete="name" required value={values.name} onChange={set("name")} {...a11y("name")} />
@@ -93,7 +93,6 @@ export function ContactForm({ interests, businessName }: { interests: string[]; 
         <button type="submit" className="btn btn-primary w-full sm:w-auto">
           <WhatsAppIcon className="size-5" /> Send via WhatsApp
         </button>
-        <p className="mt-3 text-sm text-muted">Your message opens in WhatsApp, ready to send.</p>
       </div>
     </form>
   );

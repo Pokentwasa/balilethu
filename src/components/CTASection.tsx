@@ -1,11 +1,11 @@
 import Link from "next/link";
 import { quickEnquiryUrl } from "@/lib/whatsapp";
-import { Artwork } from "./Artwork";
-import { WhatsAppIcon } from "./Icons";
+import { ArrowRight, WhatsAppIcon } from "./Icons";
 
+/** Closing call to action for inner pages. */
 export function CTASection({
   heading = "Looking for livestock?",
-  copy = "Tell us what you need and we'll help you check current availability.",
+  copy = "Tell us what you need and we'll check current availability.",
   subject,
 }: {
   heading?: string;
@@ -13,26 +13,22 @@ export function CTASection({
   subject?: string;
 }) {
   return (
-    <section aria-labelledby="final-cta" className="relative isolate overflow-hidden bg-earth-deep text-bone">
-      <div className="absolute inset-0 -z-10 opacity-35">
-        <Artwork seed="final-cta" tone="earth" />
-      </div>
-      <div className="absolute inset-0 -z-10 bg-gradient-to-t from-earth-deep via-earth-deep/80 to-earth/40" />
-      <div className="container-x py-24 md:py-36">
-        <div className="max-w-3xl" data-reveal>
-          <h2 id="final-cta" className="text-5xl leading-[0.98] sm:text-6xl lg:text-[5.5rem]">
+    <section aria-labelledby="final-cta" className="border-t border-line">
+      <div className="container-x grid gap-8 py-20 md:py-28 lg:grid-cols-12 lg:items-end">
+        <div className="lg:col-span-7">
+          <h2 id="final-cta" className="text-[2.6rem] leading-[1.02] sm:text-6xl" data-reveal>
             {heading}
           </h2>
-          <p className="mt-6 max-w-xl text-lg text-bone/80 sm:text-xl">{copy}</p>
-          <div className="mt-10 flex flex-col gap-3 sm:flex-row">
-            <a href={quickEnquiryUrl(subject)} target="_blank" rel="noopener noreferrer" className="btn btn-light">
-              <WhatsAppIcon className="size-5" />
-              Enquire on WhatsApp
-            </a>
-            <Link href="/livestock" className="btn btn-outline text-bone">
-              View Livestock
-            </Link>
-          </div>
+          <p className="mt-5 max-w-md text-lg text-ink-soft">{copy}</p>
+        </div>
+        <div className="flex flex-wrap items-center gap-x-8 gap-y-4 lg:col-span-5 lg:justify-end">
+          <a href={quickEnquiryUrl(subject)} target="_blank" rel="noopener noreferrer" className="btn btn-primary">
+            <WhatsAppIcon className="size-5" />
+            Enquire on WhatsApp
+          </a>
+          <Link href="/livestock" className="arrow-link text-forest">
+            View livestock <ArrowRight className="size-4" />
+          </Link>
         </div>
       </div>
     </section>
