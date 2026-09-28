@@ -4,6 +4,7 @@ import "./globals.css";
 import { site } from "@/config/site";
 import { getCategories } from "@/lib/content";
 import { categoryHref } from "@/lib/routes";
+import { findLogo } from "@/lib/images";
 import { organizationJsonLd } from "@/lib/seo";
 import { Navbar, type NavGroup } from "@/components/Navbar";
 import { Footer } from "@/components/Footer";
@@ -54,7 +55,7 @@ export default async function RootLayout({ children }: { children: React.ReactNo
   return (
     <html lang="en-ZA" className={`${fraunces.variable} ${inter.variable}`}>
       <body className="min-h-screen">
-        <Navbar groups={groups} whatsappDisplay={site.contact.whatsappDisplay} />
+        <Navbar groups={groups} whatsappDisplay={site.contact.whatsappDisplay} logoSrc={findLogo()} />
         <main id="main">{children}</main>
         <Footer />
         <RevealInit />

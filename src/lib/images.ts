@@ -31,6 +31,14 @@ export function findImage(slot: string, alt: string): StockImage | null {
   return null;
 }
 
+/** Client logo at public/images/logo.(svg|png|webp|jpg), if uploaded. */
+export function findLogo(): string | null {
+  for (const ext of [".svg", ".png", ".webp", ".jpg"]) {
+    if (fs.existsSync(path.join(ROOT, `logo${ext}`))) return `/images/logo${ext}`;
+  }
+  return null;
+}
+
 /** All images in `public/images/<dir>/`, sorted by file name (1.jpg, 2.jpg…). */
 export function findImages(dir: string, alt: string): StockImage[] {
   const full = path.join(ROOT, dir);

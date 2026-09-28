@@ -5,6 +5,7 @@ import { deliveryFacts } from "@/data/facts";
 import { categoryHref } from "@/lib/routes";
 import { whatsappUrl } from "@/lib/whatsapp";
 import { Logo } from "./Logo";
+import { findLogo } from "@/lib/images";
 import { WhatsAppIcon } from "./Icons";
 
 export function Footer() {
@@ -16,7 +17,7 @@ export function Footer() {
     <footer className="bg-forest-deep pb-28 text-bone/80 lg:pb-0">
       <div className="container-x grid gap-12 py-16 md:grid-cols-12 md:py-20">
         <div className="md:col-span-4">
-          <Logo tone="light" />
+          <Logo tone="light" src={findLogo()} />
           <p className="mt-6 max-w-sm leading-relaxed">
             Quality livestock. Practical support. Straightforward buying. Calves, cattle, sheep, goats and poultry.
           </p>

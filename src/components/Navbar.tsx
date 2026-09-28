@@ -19,7 +19,15 @@ const simpleLinks = [
   { label: "Contact", href: "/contact" },
 ];
 
-export function Navbar({ groups, whatsappDisplay }: { groups: NavGroup[]; whatsappDisplay: string }) {
+export function Navbar({
+  groups,
+  whatsappDisplay,
+  logoSrc,
+}: {
+  groups: NavGroup[];
+  whatsappDisplay: string;
+  logoSrc?: string | null;
+}) {
   const pathname = usePathname();
   const [scrolled, setScrolled] = useState(false);
   const [openGroup, setOpenGroup] = useState<string | null>(null);
@@ -85,7 +93,7 @@ export function Navbar({ groups, whatsappDisplay }: { groups: NavGroup[]; whatsa
           Skip to content
         </a>
         <nav ref={navRef} aria-label="Main" className="container-x flex h-[4.5rem] items-center justify-between gap-6 lg:h-20">
-          <Logo tone={overlay ? "light" : "dark"} />
+          <Logo tone={overlay ? "light" : "dark"} src={logoSrc} />
   
           <ul className="hidden items-center gap-1 lg:flex">
             {groups.map((g) => {
