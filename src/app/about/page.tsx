@@ -8,6 +8,7 @@ import { PageHeader } from "@/components/PageHeader";
 import { Media } from "@/components/Media";
 import { ProcessSteps } from "@/components/ProcessSteps";
 import { CTASection } from "@/components/CTASection";
+import { ArrowRight } from "@/components/Icons";
 import { MobileCtaBar } from "@/components/MobileCtaBar";
 
 export const metadata = pageMetadata({
@@ -29,7 +30,6 @@ export default async function AboutPage() {
   return (
     <>
       <PageHeader
-        eyebrow="About"
         title={<>A livestock supplier <em>you deal with directly.</em></>}
         intro={
           <p>
@@ -41,8 +41,8 @@ export default async function AboutPage() {
       />
 
       <div className="container-x">
-        <div className="overflow-hidden rounded-[1.5rem]" data-reveal="clip">
-          <Media image={null} slot="sections/about" alt="Balilethu Livestock" seed="about-hero" tone="dry" sizes="100vw" priority className="aspect-[4/3] sm:aspect-[21/9]" caption="Balilethu team / farm" />
+        <div className="overflow-hidden" data-reveal="clip">
+          <Media image={null} slot="sections/about" alt="Balilethu Livestock" sizes="100vw" priority className="aspect-[4/3] sm:aspect-[21/9]" />
         </div>
       </div>
 
@@ -51,7 +51,7 @@ export default async function AboutPage() {
           <h2 id="who-heading" className="text-4xl sm:text-5xl lg:col-span-4">Who we supply</h2>
           <ul className="grid gap-x-8 sm:grid-cols-2 lg:col-span-8">
             {serves.map((s) => (
-              <li key={s.title} className="border-t border-line py-6" data-reveal>
+              <li key={s.title} className="border-t border-tan py-6">
                 <h3 className="font-serif text-2xl">{s.title}</h3>
                 <p className="mt-2 leading-relaxed text-muted">{s.body}</p>
               </li>
@@ -60,15 +60,15 @@ export default async function AboutPage() {
         </div>
       </section>
 
-      <section aria-labelledby="what-heading" className="bg-paper py-16 md:py-24">
+      <section aria-labelledby="what-heading" className="border-t border-tan py-16 md:py-24">
         <div className="container-x grid gap-12 lg:grid-cols-12">
           <h2 id="what-heading" className="text-4xl sm:text-5xl lg:col-span-4">What we provide</h2>
           <div className="lg:col-span-8">
-            <ul className="flex flex-wrap gap-2">
+            <ul className="flex flex-wrap gap-x-8 gap-y-1">
               {categories.map((c) => (
                 <li key={c.slug}>
-                  <Link href={categoryHref(c)} className="inline-flex min-h-12 items-center rounded-full border border-line bg-bone px-5 font-serif text-xl hover:border-forest/40">
-                    {c.name}
+                  <Link href={categoryHref(c)} className="arrow-link font-serif text-xl font-normal text-forest">
+                    {c.name} <ArrowRight className="size-4" />
                   </Link>
                 </li>
               ))}
@@ -85,7 +85,7 @@ export default async function AboutPage() {
           <h2 id="history-heading" className="text-4xl sm:text-5xl lg:col-span-4">How the business has grown</h2>
           <ol className="lg:col-span-8">
             {businessTimeline.map((t) => (
-              <li key={t.year} className="grid grid-cols-[6rem_1fr] gap-6 border-t border-line py-6 sm:grid-cols-[9rem_1fr]" data-reveal>
+              <li key={t.year} className="grid grid-cols-[6rem_1fr] gap-6 border-t border-tan py-6 sm:grid-cols-[9rem_1fr]">
                 <span className="font-serif text-3xl text-forest">{t.year}</span>
                 <p className="text-lg leading-relaxed text-ink-soft">{t.text}</p>
               </li>
@@ -104,8 +104,8 @@ export default async function AboutPage() {
               Balilethu Livestock is registered in Mount Frere, Eastern Cape. {deliveryFacts.summary} {deliveryFacts.otherProvinces}
             </p>
             <p>{deliveryFacts.crossBorder}</p>
-            <Link href="/delivery" className="inline-block font-semibold text-forest link-underline">
-              Delivery &amp; collection details
+            <Link href="/delivery" className="arrow-link text-forest">
+              Delivery information <ArrowRight className="size-4" />
             </Link>
           </div>
         </div>

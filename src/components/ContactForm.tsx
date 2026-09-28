@@ -45,7 +45,7 @@ export function ContactForm({ interests, businessName }: { interests: string[]; 
 
   const err = (k: string) =>
     errors[k] ? (
-      <p id={id(`${k}-err`)} className="mt-1.5 text-sm text-clay">
+      <p id={id(`${k}-err`)} className="mt-1.5 text-sm text-coffee">
         {errors[k]}
       </p>
     ) : null;
@@ -54,12 +54,12 @@ export function ContactForm({ interests, businessName }: { interests: string[]; 
   return (
     <form onSubmit={onSubmit} noValidate className="grid gap-5 sm:grid-cols-2">
       <div>
-        <label htmlFor={id("name")} className="label">Name <span className="text-clay" aria-hidden="true">*</span></label>
+        <label htmlFor={id("name")} className="label">Name <span className="text-coffee" aria-hidden="true">*</span></label>
         <input id={id("name")} className="field" autoComplete="name" required value={values.name} onChange={set("name")} {...a11y("name")} />
         {err("name")}
       </div>
       <div>
-        <label htmlFor={id("phone")} className="label">Phone / WhatsApp <span className="text-clay" aria-hidden="true">*</span></label>
+        <label htmlFor={id("phone")} className="label">Phone / WhatsApp <span className="text-coffee" aria-hidden="true">*</span></label>
         <input id={id("phone")} className="field" type="tel" autoComplete="tel" inputMode="tel" required value={values.phone} onChange={set("phone")} {...a11y("phone")} />
         {err("phone")}
       </div>

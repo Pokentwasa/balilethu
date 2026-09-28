@@ -17,7 +17,7 @@ const tiles: { code: string; name: string; col: number; row: number; rowSpan?: n
 export function CoverageMap({ deliveryProvinces }: { deliveryProvinces: readonly string[] }) {
   return (
     <figure>
-      <div className="grid grid-cols-4 grid-rows-4 gap-1.5 sm:gap-2" role="list" aria-label="Province coverage">
+      <div className="grid grid-cols-4 grid-rows-4 gap-1" role="list" aria-label="Province coverage">
         {tiles.map((t) => {
           const delivery = deliveryProvinces.includes(t.name);
           return (
@@ -28,33 +28,28 @@ export function CoverageMap({ deliveryProvinces }: { deliveryProvinces: readonly
                 gridColumn: `${t.col} / span ${t.colSpan ?? 1}`,
                 gridRow: `${t.row} / span ${t.rowSpan ?? 1}`,
               }}
-              className={`relative flex min-h-[4.5rem] flex-col justify-between rounded-xl p-2.5 sm:min-h-24 sm:p-3.5 ${
-                delivery ? "bg-forest text-bone" : "border border-dashed border-ink/20 bg-transparent text-ink/70"
+              className={`flex min-h-[4.5rem] flex-col justify-between p-2.5 sm:min-h-24 sm:p-3.5 ${
+                delivery ? "border border-forest bg-forest text-bone" : "border border-tan bg-bone text-ink"
               }`}
             >
               <span className="font-serif text-lg leading-none sm:text-2xl">{t.code}</span>
-              <span className="text-[0.62rem] leading-tight sm:text-xs">
+              <span className="text-xs leading-tight sm:text-sm">
                 {t.name}
+                {t.code === "EC" && <span className="block opacity-80">up to Mount Frere</span>}
                 <span className="sr-only">: {delivery ? "delivery available" : "collection with own transport"}</span>
               </span>
-              {t.code === "EC" && (
-                <span className="absolute top-2.5 right-2.5 flex items-center gap-1 text-[0.6rem] font-semibold tracking-wide uppercase text-sand sm:top-3.5 sm:right-3.5">
-                  <span className="size-2 rounded-full bg-clay-soft ring-2 ring-bone/40" aria-hidden="true" />
-                  up to Mount Frere
-                </span>
-              )}
             </div>
           );
         })}
       </div>
       <figcaption className="mt-5 flex flex-wrap gap-x-6 gap-y-2 text-sm text-muted">
         <span className="flex items-center gap-2">
-          <span className="size-3 rounded bg-forest" aria-hidden="true" /> Delivery
+          <span className="size-3 bg-forest" aria-hidden="true" /> Delivery
         </span>
         <span className="flex items-center gap-2">
-          <span className="size-3 rounded border border-dashed border-ink/40" aria-hidden="true" /> Collection — own transport
+          <span className="size-3 border border-tan bg-bone" aria-hidden="true" /> Collection, own transport
         </span>
-        <span className="text-xs">Schematic, not to scale.</span>
+        <span>Schematic, not to scale.</span>
       </figcaption>
     </figure>
   );

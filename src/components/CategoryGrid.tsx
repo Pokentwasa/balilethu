@@ -2,6 +2,7 @@ import Link from "next/link";
 import type { Category } from "@/lib/types";
 import { CategoryCard } from "./CategoryCard";
 import { SectionHeading } from "./SectionHeading";
+import { ArrowRight } from "./Icons";
 
 export function CategoryGrid({ categories }: { categories: Category[] }) {
   const [lead, ...rest] = categories;
@@ -10,8 +11,7 @@ export function CategoryGrid({ categories }: { categories: Category[] }) {
       <div className="container-x">
         <SectionHeading
           id="categories-heading"
-          eyebrow="Browse by category"
-          title={<>From calves and cattle to sheep, goats <em className="text-forest-soft">and poultry.</em></>}
+          title={<>From calves and cattle to sheep, goats <em className="text-forest">and poultry.</em></>}
           intro="Livestock for farmers, households and growing agricultural businesses. Choose a category to see current stock, pricing and what you need to know before buying."
           align="split"
         />
@@ -26,13 +26,16 @@ export function CategoryGrid({ categories }: { categories: Category[] }) {
             </li>
           ))}
         </ul>
-        <div className="container-x mt-4 flex flex-wrap gap-2">
+        <ul className="container-x mt-4 border-t border-tan">
           {categories.map((c) => (
-            <Link key={c.slug} href={`/${c.group}/${c.slug}`} className="rounded-full border border-line bg-paper px-4 py-2.5 text-sm font-medium">
-              {c.name}
-            </Link>
+            <li key={c.slug} className="border-b border-tan">
+              <Link href={`/${c.group}/${c.slug}`} className="flex min-h-12 items-center justify-between font-serif text-xl">
+                {c.name}
+                <ArrowRight className="size-4 text-forest" />
+              </Link>
+            </li>
           ))}
-        </div>
+        </ul>
       </div>
 
       <div className="container-x mt-14 hidden md:block">

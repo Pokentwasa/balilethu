@@ -58,7 +58,12 @@ export async function getStock(filter?: { category?: CategorySlug; group?: Categ
 }
 
 export async function getFeaturedStock(limit = 6): Promise<StockItem[]> {
-  return stock.filter((s) => s.featured).slice(0, limit).map(withStockImages);
+  // One listing per category first, so neighbouring cards don't repeat a photo.
+  const featured = stock.filter((s) => s.featured);
+  const seen = new Set<string>();
+  const spread = featured.filter((s) => !seen.has(s.category) && seen.add(s.category));
+  const rest = featured.filter((s) => !spread.includes(s));
+  return [...spread, ...rest].slice(0, limit).map(withStockImages);
 }
 
 export async function getStockItem(category: string, slug: string): Promise<StockItem | undefined> {

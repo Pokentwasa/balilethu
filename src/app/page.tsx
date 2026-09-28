@@ -11,7 +11,7 @@ import { EnquirySection } from "@/components/EnquirySection";
 import { WhyBalilethu } from "@/components/WhyBalilethu";
 import { BeginnerSupport } from "@/components/BeginnerSupport";
 import { DeliverySection } from "@/components/DeliverySection";
-import { Testimonials } from "@/components/Testimonials";
+import { RecentDeliveries } from "@/components/RecentDeliveries";
 import { CTASection } from "@/components/CTASection";
 import { MobileCtaBar } from "@/components/MobileCtaBar";
 import { ArrowRight } from "@/components/Icons";
@@ -39,16 +39,15 @@ export default async function HomePage() {
       <Hero image={null} />
       <CategoryGrid categories={categories} />
 
-      <section aria-labelledby="stock-heading" className="border-t border-line bg-paper py-20 md:py-28">
+      <section aria-labelledby="stock-heading" className="border-t border-tan py-20 md:py-28">
         <div className="container-x">
           <SectionHeading
             id="stock-heading"
-            eyebrow="Current stock"
             title="Available livestock"
-            intro="A selection of what Balilethu supplies. Prices and numbers change with each intake — every enquiry is confirmed against current stock."
+            intro="A selection of what Balilethu supplies. Prices and numbers change with each intake, so every enquiry is confirmed against current stock. Photos are illustrative."
             align="split"
           >
-            <Link href="/livestock" className="mt-6 inline-flex items-center gap-2 font-semibold text-forest link-underline">
+            <Link href="/livestock" className="arrow-link mt-4 text-forest">
               Browse all stock <ArrowRight className="size-4" />
             </Link>
           </SectionHeading>
@@ -67,7 +66,7 @@ export default async function HomePage() {
       <WhyBalilethu />
       <BeginnerSupport products={starter} />
       <DeliverySection />
-      <Testimonials testimonials={testimonials} />
+      <RecentDeliveries testimonials={testimonials} />
       <CTASection />
       <MobileCtaBar whatsappHref={quickEnquiryUrl()} secondary={{ label: "Browse", href: "/livestock" }} />
     </>

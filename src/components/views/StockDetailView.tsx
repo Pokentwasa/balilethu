@@ -53,7 +53,7 @@ export function StockDetailView({ item, category, related }: { item: StockItem; 
           <StockGallery
             images={item.images}
             fallback={
-              <Media image={null} seed={`stock-${item.slug}`} sizes="(min-width: 1024px) 58vw, 100vw" priority className="aspect-[4/3] rounded-[1.25rem]" caption={item.name} />
+              <Media image={null} sizes="(min-width: 1024px) 58vw, 100vw" priority className="aspect-[4/3]" />
             }
           />
         </div>
@@ -70,11 +70,10 @@ export function StockDetailView({ item, category, related }: { item: StockItem; 
 
           <section aria-labelledby="notes-heading" className="mt-14">
             <h2 id="notes-heading" className="text-3xl sm:text-4xl">Before you purchase</h2>
-            <ul className="mt-6 space-y-3">
-              {notes.map((n, i) => (
-                <li key={n} className="flex gap-4 border-b border-line pb-3 leading-relaxed">
-                  <span className="font-mono text-xs text-clay pt-1.5">{String(i + 1).padStart(2, "0")}</span>
-                  <span className="text-ink-soft">{n}</span>
+            <ul className="mt-6 border-t border-tan">
+              {notes.map((n) => (
+                <li key={n} className="border-b border-tan py-3 leading-relaxed text-ink-soft">
+                  {n}
                 </li>
               ))}
             </ul>
@@ -88,22 +87,20 @@ export function StockDetailView({ item, category, related }: { item: StockItem; 
 
         <aside className="order-2 lg:col-span-5 lg:col-start-8 lg:row-span-2 lg:row-start-1">
           <div className="lg:sticky lg:top-28">
-            <div className="flex flex-wrap items-center gap-3">
-              <AvailabilityBadge availability={item.availability} />
-              <Link href={categoryHref(category)} className="eyebrow text-clay link-underline">
-                {category.name}
-              </Link>
-            </div>
-            <h1 className="mt-5 text-[2.6rem] leading-[1.02] font-light sm:text-6xl">{item.name}</h1>
+            <Link href={categoryHref(category)} className="text-[0.95rem] text-muted underline underline-offset-4">
+              {category.name}
+            </Link>
+            <h1 className="mt-4 text-[2.6rem] leading-[1.02] font-light sm:text-6xl">{item.name}</h1>
+            <AvailabilityBadge availability={item.availability} className="mt-3" />
             <p className="mt-4 text-lg leading-relaxed text-muted">{item.shortDescription}</p>
 
-            <div className="mt-8 rounded-[1.25rem] border border-line bg-paper p-6">
+            <div className="mt-8 border-t border-tan pt-5">
               <p className="text-sm text-muted">Price</p>
               <p className="mt-1 font-serif text-4xl">
                 {price.main}
                 {price.note && <span className="mt-1 block font-sans text-sm text-muted">{price.note}</span>}
               </p>
-              <dl className="mt-6 divide-y divide-line border-t border-line text-sm">
+              <dl className="mt-6 divide-y divide-tan border-t border-tan text-sm">
                 {specs.map((s) => (
                   <div key={s.label} className="flex justify-between gap-4 py-3">
                     <dt className="text-muted">{s.label}</dt>
@@ -114,16 +111,16 @@ export function StockDetailView({ item, category, related }: { item: StockItem; 
               <a href={enquiry} target="_blank" rel="noopener noreferrer" className="btn btn-primary mt-6 w-full">
                 <WhatsAppIcon className="size-5" /> Enquire about this livestock
               </a>
-              <Link href={enquireHref({ category: category.slug, item: item.slug })} className="btn btn-outline mt-2 w-full text-forest">
-                Add quantity &amp; location
+              <Link href={enquireHref({ category: category.slug, item: item.slug })} className="arrow-link mt-2 text-forest">
+                Add quantity &amp; location <ArrowRight className="size-4" />
               </Link>
             </div>
 
-            <div className="mt-6 rounded-[1.25rem] bg-sand p-6">
+            <div className="mt-8 border-t border-tan pt-5">
               <h2 className="font-serif text-xl">Delivery</h2>
               <p className="mt-2 text-sm leading-relaxed text-ink-soft">{item.deliveryNotes ?? deliveryFacts.summary}</p>
-              <Link href="/delivery" className="mt-3 inline-flex items-center gap-1.5 text-sm font-semibold text-forest link-underline">
-                Delivery &amp; collection <ArrowRight className="size-4" />
+              <Link href="/delivery" className="arrow-link mt-1 text-forest">
+                Delivery information <ArrowRight className="size-4" />
               </Link>
             </div>
           </div>
@@ -131,7 +128,7 @@ export function StockDetailView({ item, category, related }: { item: StockItem; 
       </article>
 
       {related.length > 0 && (
-        <section aria-labelledby="related-stock" className="border-t border-line bg-paper py-16 md:py-24">
+        <section aria-labelledby="related-stock" className="border-t border-tan py-16 md:py-24">
           <div className="container-x">
             <h2 id="related-stock" className="text-4xl">More {category.name.toLowerCase()}</h2>
             <ul className="mt-10 grid gap-x-6 gap-y-14 sm:grid-cols-2 lg:grid-cols-3">
